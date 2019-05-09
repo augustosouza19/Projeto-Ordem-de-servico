@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Z0_TELA_SOM.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ISERJ_3.5_-_PROJETO_FINAL_ECS&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">A_GUI_SOM</a> &gt; <span class="el_source">Z0_TELA_SOM.java</span></div><h1>Z0_TELA_SOM.java</h1><pre class="source lang-java linenums">package A_GUI_SOM;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Desktop;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import javax.media.CannotRealizeException;
+import javax.media.ControllerEvent;
+import javax.media.ControllerListener;
+import javax.media.Manager;
+import javax.media.NoPlayerException;
+import javax.media.Player;
+import javax.media.RealizeCompleteEvent;
+import javax.swing.JFileChooser;
+
+public class Z0_TELA_SOM extends javax.swing.JFrame implements ActionListener , ControllerListener
+{  
+    private File file;
+    private Player player;
+    
+    public Z0_TELA_SOM() 
+<span class="nc" id="L29">    {</span>
+<span class="nc" id="L30">        initComponents();</span>
+        
+<span class="nc" id="L32">        setTitle(&quot;Media Player&quot;);</span>
+<span class="nc" id="L33">        setSize(600, 400);</span>
+<span class="nc" id="L34">        setLocation(500, 100);</span>
+<span class="nc" id="L35">    }</span>
+    
+    @Override
+    public void actionPerformed( ActionEvent e )
+    {
+<span class="nc" id="L40">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;);</span>
+    }
+
+    @Override
+    public void controllerUpdate( ControllerEvent ce ) 
+    {
+        //throw new UnsupportedOperationException(&quot;Not supported yet.&quot;);
+        
+        try
+        {
+<span class="nc" id="L50">            Container con=getContentPane();</span>
+            
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            if( ce instanceof RealizeCompleteEvent )</span>
+            {
+<span class="nc" id="L54">                Component visualcomponent = player.getVisualComponent();</span>
+                
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if( visualcomponent != null )</span>
+                {
+<span class="nc" id="L58">                    con.add(visualcomponent,BorderLayout.CENTER );</span>
+                }
+                
+<span class="nc" id="L61">                Component controlcom = player.getControlPanelComponent();</span>
+                
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                if( controlcom != null )</span>
+                {
+<span class="nc" id="L65">                    con.add(controlcom,BorderLayout.SOUTH);</span>
+                }
+                
+<span class="nc" id="L68">                con.doLayout();</span>
+            }
+        }
+        
+<span class="nc" id="L72">        catch( Exception e )</span>
+        {
+<span class="nc" id="L74">            System.out.println( e );</span>
+<span class="nc" id="L75">        }</span>
+<span class="nc" id="L76">    }</span>
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L82">        jMenuBar1 = new javax.swing.JMenuBar();</span>
+<span class="nc" id="L83">        jMenu1 = new javax.swing.JMenu();</span>
+<span class="nc" id="L84">        jMenuItem1 = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L85">        jMenu3 = new javax.swing.JMenu();</span>
+<span class="nc" id="L86">        jMenuItem2 = new javax.swing.JMenuItem();</span>
+
+<span class="nc" id="L88">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+
+<span class="nc" id="L90">        jMenu1.setText(&quot;BUSCAR&quot;);</span>
+
+<span class="nc" id="L92">        jMenuItem1.setText(&quot;Open&quot;);</span>
+<span class="nc" id="L93">        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L95">                jMenuItem1ActionPerformed(evt);</span>
+<span class="nc" id="L96">            }</span>
+        });
+<span class="nc" id="L98">        jMenu1.add(jMenuItem1);</span>
+
+<span class="nc" id="L100">        jMenuBar1.add(jMenu1);</span>
+
+<span class="nc" id="L102">        jMenu3.setText(&quot;LINKS&quot;);</span>
+
+<span class="nc" id="L104">        jMenuItem2.setText(&quot;jMenuItem2&quot;);</span>
+<span class="nc" id="L105">        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L107">                jMenuItem2ActionPerformed(evt);</span>
+<span class="nc" id="L108">            }</span>
+        });
+<span class="nc" id="L110">        jMenu3.add(jMenuItem2);</span>
+
+<span class="nc" id="L112">        jMenuBar1.add(jMenu3);</span>
+
+<span class="nc" id="L114">        setJMenuBar(jMenuBar1);</span>
+
+<span class="nc" id="L116">        pack();</span>
+<span class="nc" id="L117">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L118">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        try
+        {
+<span class="nc" id="L124">            JFileChooser choose = new JFileChooser();</span>
+<span class="nc" id="L125">            choose.showOpenDialog( this );</span>
+            
+<span class="nc" id="L127">            file = choose.getSelectedFile();</span>
+            
+<span class="nc bnc" id="L129" title="All 2 branches missed.">            if( !file.exists() )</span>
+            {
+<span class="nc" id="L131">                throw new FileNotFoundException();</span>
+            }
+            
+            else
+            {
+            
+            }
+        }
+        
+<span class="nc" id="L140">        catch( HeadlessException | FileNotFoundException e )</span>
+        {
+<span class="nc" id="L142">            System.out.println( e );</span>
+<span class="nc" id="L143">        }</span>
+        
+        try
+        {
+<span class="nc" id="L147">            player = Manager.createRealizedPlayer( file.toURL() );</span>
+<span class="nc" id="L148">            player.addControllerListener( this );</span>
+<span class="nc" id="L149">            player.start();</span>
+<span class="nc" id="L150">            player.realize();</span>
+        }
+        
+<span class="nc" id="L153">        catch( IOException | NoPlayerException | CannotRealizeException e )</span>
+        {
+<span class="nc" id="L155">            System.out.println( e );</span>
+<span class="nc" id="L156">        }</span>
+<span class="nc" id="L157">    }//GEN-LAST:event_jMenuItem1ActionPerformed</span>
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+
+        try
+        {
+<span class="nc" id="L163">            URI link = new URI(&quot;https://www.youtube.com/watch?v=7WneN331KSs&quot;);</span>
+<span class="nc" id="L164">            Desktop.getDesktop().browse(link);</span>
+        }
+        
+<span class="nc" id="L167">        catch( Exception error )</span>
+        {
+<span class="nc" id="L169">            System.out.println(error);</span>
+<span class="nc" id="L170">        } </span>
+<span class="nc" id="L171">    }//GEN-LAST:event_jMenuItem2ActionPerformed</span>
+
+    public static void main(String args[]) 
+    {
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L180" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">                if (&quot;Windows&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L182">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L183">                    break;</span>
+                }
+            }
+<span class="nc" id="L186">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L187">            java.util.logging.Logger.getLogger(Z0_TELA_SOM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L188">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L189">            java.util.logging.Logger.getLogger(Z0_TELA_SOM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L190">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L191">            java.util.logging.Logger.getLogger(Z0_TELA_SOM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L192">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L193">            java.util.logging.Logger.getLogger(Z0_TELA_SOM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L194">        }</span>
+        //&lt;/editor-fold&gt;
+
+<span class="nc" id="L197">        java.awt.EventQueue.invokeLater(new Runnable() </span>
+<span class="nc" id="L198">        {</span>
+            public void run()
+            {
+<span class="nc" id="L201">                new Z0_TELA_SOM().setVisible(true);</span>
+<span class="nc" id="L202">            }</span>
+        });
+<span class="nc" id="L204">    }</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

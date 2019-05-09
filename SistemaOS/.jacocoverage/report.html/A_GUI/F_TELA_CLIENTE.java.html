@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>F_TELA_CLIENTE.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ISERJ_3.5_-_PROJETO_FINAL_ECS&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">A_GUI</a> &gt; <span class="el_source">F_TELA_CLIENTE.java</span></div><h1>F_TELA_CLIENTE.java</h1><pre class="source lang-java linenums">package A_GUI;
+
+// CLASSE
+import B_CONEXAO_MYSQL.CONEXAO;
+
+// EXCEÇÕES
+import java.sql.SQLException;
+import java.awt.HeadlessException;
+
+// CONEXÕES
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+// CLASSE SWING
+import javax.swing.JOptionPane;
+
+// TABELA DINÂMICA
+import net.proteanit.sql.DbUtils;
+
+public class F_TELA_CLIENTE extends javax.swing.JInternalFrame 
+{
+    // VARÁVEIS ESPECIAIS DE CONEXÃO AO BANCO DE DADOS
+<span class="nc" id="L24">    Connection conexao = null; </span>
+<span class="nc" id="L25">    PreparedStatement pst = null; // Executar as instruções SQL </span>
+<span class="nc" id="L26">    ResultSet rs = null; // Exibe o resultado das instruções SQL</span>
+    
+    public F_TELA_CLIENTE()
+<span class="nc" id="L29">    {</span>
+<span class="nc" id="L30">        initComponents();</span>
+                 
+        // CONEXÃO ABERTA 
+<span class="nc" id="L33">        conexao = CONEXAO.conector();    </span>
+<span class="nc" id="L34">    }    </span>
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L39">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L40">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L41">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L42">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L43">        txtCliPesNom = new javax.swing.JTextField();</span>
+<span class="nc" id="L44">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L45">        tblCli1 = new javax.swing.JTable();</span>
+<span class="nc" id="L46">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L47">        tblCli2 = new javax.swing.JTable();</span>
+<span class="nc" id="L48">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L49">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L52">        jLabel8 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        jLabel9 = new javax.swing.JLabel();</span>
+<span class="nc" id="L54">        jLabel10 = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        txtCliNom = new javax.swing.JTextField();</span>
+<span class="nc" id="L56">        txtCliEnd = new javax.swing.JTextField();</span>
+<span class="nc" id="L57">        txtCliEma = new javax.swing.JTextField();</span>
+<span class="nc" id="L58">        txtCliId = new javax.swing.JTextField();</span>
+<span class="nc" id="L59">        txtCliFon = new javax.swing.JFormattedTextField();</span>
+<span class="nc" id="L60">        btnCliLim = new javax.swing.JButton();</span>
+<span class="nc" id="L61">        jToolBar1 = new javax.swing.JToolBar();</span>
+<span class="nc" id="L62">        btnCliIns = new javax.swing.JButton();</span>
+<span class="nc" id="L63">        btnCliAlt = new javax.swing.JButton();</span>
+<span class="nc" id="L64">        btnCliExc = new javax.swing.JButton();</span>
+<span class="nc" id="L65">        jSeparator1 = new javax.swing.JToolBar.Separator();</span>
+<span class="nc" id="L66">        txtCliPesId = new javax.swing.JTextField();</span>
+
+<span class="nc" id="L68">        setClosable(true);</span>
+<span class="nc" id="L69">        setIconifiable(true);</span>
+<span class="nc" id="L70">        setMaximizable(true);</span>
+<span class="nc" id="L71">        setTitle(&quot;CLIENTE&quot;);</span>
+
+<span class="nc" id="L73">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/folder_explore.png&quot;))); // NOI18N</span>
+
+<span class="nc" id="L75">        jLabel2.setText(&quot;Id :&quot;);</span>
+
+<span class="nc" id="L77">        jLabel3.setText(&quot;Nome :&quot;);</span>
+
+<span class="nc" id="L79">        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/folder_explore.png&quot;))); // NOI18N</span>
+
+<span class="nc" id="L81">        txtCliPesNom.setToolTipText(&quot;Pesquisar clientes pelo nome&quot;);</span>
+<span class="nc" id="L82">        txtCliPesNom.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L84">                txtCliPesNomKeyReleased(evt);</span>
+<span class="nc" id="L85">            }</span>
+        });
+
+<span class="nc" id="L88">        tblCli1.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;NOME&quot;, &quot;ENDEREÇO&quot;, &quot;TELEFONE&quot;, &quot;EMAIL&quot;
+            }
+<span class="nc" id="L104">        ) {</span>
+<span class="nc" id="L105">            boolean[] canEdit = new boolean [] {</span>
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+<span class="nc" id="L110">                return canEdit [columnIndex];</span>
+            }
+        });
+<span class="nc" id="L113">        tblCli1.setToolTipText(&quot;Tabela de clientes 1&quot;);</span>
+<span class="nc" id="L114">        tblCli1.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L115">        tblCli1.addMouseListener(new java.awt.event.MouseAdapter() {</span>
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+<span class="nc" id="L117">                tblCli1MouseClicked(evt);</span>
+<span class="nc" id="L118">            }</span>
+        });
+<span class="nc" id="L120">        jScrollPane1.setViewportView(tblCli1);</span>
+
+<span class="nc" id="L122">        tblCli2.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                &quot;NOME&quot;
+            }
+        ));
+<span class="nc" id="L139">        tblCli2.setToolTipText(&quot;Tabela de clientes 2&quot;);</span>
+<span class="nc" id="L140">        jScrollPane2.setViewportView(tblCli2);</span>
+
+<span class="nc" id="L142">        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, &quot;Cadastro&quot;, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font(&quot;Tahoma&quot;, 0, 18), new java.awt.Color(0, 255, 255))); // NOI18N</span>
+
+<span class="nc" id="L144">        jLabel5.setText(&quot;E-MAIL :&quot;);</span>
+
+<span class="nc" id="L146">        jLabel6.setText(&quot;* NOME :&quot;);</span>
+
+<span class="nc" id="L148">        jLabel7.setText(&quot;ENDEREÇO : &quot;);</span>
+
+<span class="nc" id="L150">        jLabel8.setText(&quot;* TELEFONE :  &quot;);</span>
+
+<span class="nc" id="L152">        jLabel9.setText(&quot;* Campos obrigatórios&quot;);</span>
+
+<span class="nc" id="L154">        jLabel10.setText(&quot;ID :&quot;);</span>
+
+<span class="nc" id="L156">        txtCliNom.setToolTipText(&quot;Digite o nome do cliente&quot;);</span>
+
+<span class="nc" id="L158">        txtCliEnd.setToolTipText(&quot;Digite o endereço do cliente&quot;);</span>
+
+<span class="nc" id="L160">        txtCliEma.setToolTipText(&quot;Digite o email do cliente&quot;);</span>
+
+<span class="nc" id="L162">        txtCliId.setToolTipText(&quot;Id do cliente&quot;);</span>
+<span class="nc" id="L163">        txtCliId.setEnabled(false);</span>
+
+        try {
+<span class="nc" id="L166">            txtCliFon.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;####-####&quot;)));</span>
+<span class="nc" id="L167">        } catch (java.text.ParseException ex) {</span>
+<span class="nc" id="L168">            ex.printStackTrace();</span>
+<span class="nc" id="L169">        }</span>
+<span class="nc" id="L170">        txtCliFon.setToolTipText(&quot;Digite o telefone do cliente&quot;);</span>
+
+<span class="nc" id="L172">        btnCliLim.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/wiping-swipe-for-floors.png&quot;))); // NOI18N</span>
+<span class="nc" id="L173">        btnCliLim.setToolTipText(&quot;Limpar campos&quot;);</span>
+<span class="nc" id="L174">        btnCliLim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L175">        btnCliLim.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L177">                btnCliLimActionPerformed(evt);</span>
+<span class="nc" id="L178">            }</span>
+        });
+
+<span class="nc" id="L181">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L182">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L183">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L184">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L185">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L186">                .addContainerGap()</span>
+<span class="nc" id="L187">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L188">                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L189">                        .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L190">                            .addComponent(jLabel6)</span>
+<span class="nc" id="L191">                            .addGap(18, 18, 18)</span>
+<span class="nc" id="L192">                            .addComponent(txtCliNom))</span>
+<span class="nc" id="L193">                        .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L194">                            .addComponent(jLabel5)</span>
+<span class="nc" id="L195">                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L196">                            .addComponent(txtCliEma))</span>
+<span class="nc" id="L197">                        .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L198">                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L199">                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L200">                                .addComponent(jLabel8))</span>
+<span class="nc" id="L201">                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L202">                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L203">                                .addComponent(txtCliFon, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L204">                                .addComponent(txtCliEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L205">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L206">                        .addComponent(jLabel10)</span>
+<span class="nc" id="L207">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L208">                        .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L209">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)</span>
+<span class="nc" id="L210">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L211">                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L212">                    .addComponent(btnCliLim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L213">                .addContainerGap())</span>
+        );
+<span class="nc" id="L215">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L216">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L217">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L218">                .addContainerGap()</span>
+<span class="nc" id="L219">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L220">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L221">                        .addComponent(jLabel9)</span>
+<span class="nc" id="L222">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L223">                        .addComponent(btnCliLim, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L224">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L225">                        .addGap(0, 6, Short.MAX_VALUE)</span>
+<span class="nc" id="L226">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L227">                            .addComponent(jLabel10)</span>
+<span class="nc" id="L228">                            .addComponent(txtCliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L229">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L230">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L231">                            .addComponent(jLabel6)</span>
+<span class="nc" id="L232">                            .addComponent(txtCliNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L233">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L234">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L235">                            .addComponent(txtCliEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L236">                            .addComponent(jLabel7))</span>
+<span class="nc" id="L237">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L238">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L239">                            .addComponent(jLabel8)</span>
+<span class="nc" id="L240">                            .addComponent(txtCliFon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L241">                        .addGap(20, 20, 20)</span>
+<span class="nc" id="L242">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L243">                            .addComponent(jLabel5)</span>
+<span class="nc" id="L244">                            .addComponent(txtCliEma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L245">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L248">        jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L249">        jToolBar1.setRollover(true);</span>
+
+<span class="nc" id="L251">        btnCliIns.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_add.png&quot;))); // NOI18N</span>
+<span class="nc" id="L252">        btnCliIns.setToolTipText(&quot;Inserir Cliente&quot;);</span>
+<span class="nc" id="L253">        btnCliIns.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L254">        btnCliIns.setFocusable(false);</span>
+<span class="nc" id="L255">        btnCliIns.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L256">        btnCliIns.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L257">        btnCliIns.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L259">                btnCliInsActionPerformed(evt);</span>
+<span class="nc" id="L260">            }</span>
+        });
+<span class="nc" id="L262">        jToolBar1.add(btnCliIns);</span>
+
+<span class="nc" id="L264">        btnCliAlt.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L265">        btnCliAlt.setToolTipText(&quot;Alterar Cliente&quot;);</span>
+<span class="nc" id="L266">        btnCliAlt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L267">        btnCliAlt.setFocusable(false);</span>
+<span class="nc" id="L268">        btnCliAlt.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L269">        btnCliAlt.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L270">        btnCliAlt.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L272">                btnCliAltActionPerformed(evt);</span>
+<span class="nc" id="L273">            }</span>
+        });
+<span class="nc" id="L275">        jToolBar1.add(btnCliAlt);</span>
+
+<span class="nc" id="L277">        btnCliExc.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L278">        btnCliExc.setToolTipText(&quot;Excluir Cliente&quot;);</span>
+<span class="nc" id="L279">        btnCliExc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L280">        btnCliExc.setFocusable(false);</span>
+<span class="nc" id="L281">        btnCliExc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L282">        btnCliExc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L283">        btnCliExc.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L285">                btnCliExcActionPerformed(evt);</span>
+<span class="nc" id="L286">            }</span>
+        });
+<span class="nc" id="L288">        jToolBar1.add(btnCliExc);</span>
+<span class="nc" id="L289">        jToolBar1.add(jSeparator1);</span>
+
+<span class="nc" id="L291">        txtCliPesId.setToolTipText(&quot;Pesquisar clientes pelo id&quot;);</span>
+<span class="nc" id="L292">        txtCliPesId.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L294">                txtCliPesIdKeyReleased(evt);</span>
+<span class="nc" id="L295">            }</span>
+        });
+
+<span class="nc" id="L298">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L299">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L300">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L301">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L302">            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L303">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L304">                .addContainerGap()</span>
+<span class="nc" id="L305">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L306">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L307">                        .addGap(8, 8, 8)</span>
+<span class="nc" id="L308">                        .addComponent(jLabel3)</span>
+<span class="nc" id="L309">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L310">                        .addComponent(txtCliPesNom, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L311">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L312">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L313">                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L314">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L315">                        .addGap(14, 14, 14)</span>
+<span class="nc" id="L316">                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L317">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L318">                        .addComponent(txtCliPesId, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L319">                        .addGap(18, 18, 18)</span>
+<span class="nc" id="L320">                        .addComponent(jLabel4))</span>
+<span class="nc" id="L321">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L322">                        .addGap(8, 8, 8)</span>
+<span class="nc" id="L323">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L324">                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L325">                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L326">                .addContainerGap(36, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L328">        layout.setVerticalGroup(</span>
+<span class="nc" id="L329">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L330">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L331">                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L332">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L333">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L334">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L335">                        .addComponent(txtCliPesNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L336">                        .addComponent(jLabel3))</span>
+<span class="nc" id="L337">                    .addComponent(jLabel1))</span>
+<span class="nc" id="L338">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L339">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L340">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L341">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L342">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L343">                        .addComponent(txtCliPesId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L344">                        .addComponent(jLabel2))</span>
+<span class="nc" id="L345">                    .addComponent(jLabel4))</span>
+<span class="nc" id="L346">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L347">                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L348">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L349">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L350">                .addGap(30, 30, 30))</span>
+        );
+
+<span class="nc" id="L353">        setBounds(0, 0, 915, 650);</span>
+<span class="nc" id="L354">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+    private void btnCliInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliInsActionPerformed
+
+        // ATRIBUTOS
+<span class="nc" id="L358">        int adicionado = 0;</span>
+        String sql;
+        
+        // MÉTODO PARA ADICIONAR CLIENTE, COLOCA-LOS NO BANCO DE DADOS
+<span class="nc" id="L362">        sql = &quot; insert into tbclientes( nomecli, endcli, fonecli, emailcli ) values ( ?, ?, ?, ? ) &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L367">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGANDO O NOME, ENDEREÇO, TELEFONE, EMAIL DO CLIENTE NOS CAMPOS DE TEXTO E COLOCANDO NO BANCO DE DADOS
+<span class="nc" id="L370">            pst.setString( 1, txtCliNom.getText() );</span>
+<span class="nc" id="L371">            pst.setString( 2, txtCliEnd.getText() );</span>
+<span class="nc" id="L372">            pst.setString( 3, txtCliFon.getText() );</span>
+<span class="nc" id="L373">            pst.setString( 4, txtCliEma.getText() );</span>
+                
+            // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
+<span class="nc bnc" id="L376" title="All 4 branches missed.">            if ( txtCliNom.getText().isEmpty() || txtCliFon.getText().isEmpty() )</span>
+            {
+<span class="nc" id="L378">                JOptionPane.showMessageDialog( null, &quot; POR FAVOR, PREENCHA OS CAMPOS OBRIGATÓRIOS &quot; );</span>
+            }
+            
+            else
+            {
+                // CONEXÃO PARA INSERIR NO BANCO DE DADOS
+<span class="nc" id="L384">                adicionado = pst.executeUpdate();</span>
+
+                // SAÍDA DE VALOR 1;  
+<span class="nc" id="L387">                System.out.println( adicionado );</span>
+            }
+            
+<span class="nc bnc" id="L390" title="All 2 branches missed.">            if( adicionado &gt; 0 )</span>
+            {
+                // LIMPAR CAMPOS
+<span class="nc" id="L393">                txtCliPesId.setText(&quot;&quot;);</span>
+<span class="nc" id="L394">                txtCliPesNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L395">                txtCliId.setText(&quot;&quot;);</span>
+<span class="nc" id="L396">                txtCliNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L397">                txtCliFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L398">                txtCliEnd.setText(&quot;&quot;);</span>
+<span class="nc" id="L399">                txtCliEma.setText(&quot;&quot;);</span>
+               
+<span class="nc" id="L401">                JOptionPane.showMessageDialog( null, &quot; CLIENTE CADASTRADO &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+            }
+            
+            else
+            {
+<span class="nc" id="L406">                JOptionPane.showMessageDialog( null, &quot; CLIENTE NÃO CADASTRADO &quot;, &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+            }
+        }
+        
+<span class="nc" id="L410">        catch ( SQLException | HeadlessException e )</span>
+        {            
+            // APOIO AO ERRO
+<span class="nc" id="L413">            System.out.println( e );</span>
+<span class="nc" id="L414">        }  </span>
+<span class="nc" id="L415">    }//GEN-LAST:event_btnCliInsActionPerformed</span>
+    private void txtCliPesNomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesNomKeyReleased
+
+        //////////////// EVENTO EM TEMPO REAL DE PESQUISA //////////////////////
+        String sql;
+
+        // MÉTODO PESQUISAR PELO NOME
+<span class="nc" id="L422">        sql = &quot; select idcli as ID, nomecli as NOME, endcli as ENDEREÇO, fonecli as TELEFONE, emailcli as EMAIL from tbclientes where nomecli like ? order by idcli &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L427">            pst = conexao.prepareStatement(sql);</span>
+
+            // PEGANDO O NOME DO CLIENTE NOS CAMPOS DE TEXTO E COLOCANDO NO BANCO DE DADOS
+<span class="nc" id="L430">            pst.setString( 1, txtCliPesNom.getText() + &quot;%&quot;);</span>
+           
+            // CONEXÃO PARA PESQUISAR E INSERIR OS DADOS DO BANCO DE DADOS
+<span class="nc" id="L433">            rs = pst.executeQuery();</span>
+           
+            // TRAZENDO E COLOCANDO OS DADOS NA TABELA
+<span class="nc" id="L436">            tblCli1.setModel( DbUtils.resultSetToTableModel( rs ) );</span>
+        }
+        
+<span class="nc" id="L439">        catch ( Exception e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L442">            System.out.println( e );            </span>
+<span class="nc" id="L443">        }         </span>
+<span class="nc" id="L444">    }//GEN-LAST:event_txtCliPesNomKeyReleased</span>
+    private void txtCliPesIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCliPesIdKeyReleased
+  
+        //////////////// EVENTO EM TEMPO REAL DE PESQUISA //////////////////////
+        String sql;
+
+        // MÉTODO PESQUISAR PELO NOME
+<span class="nc" id="L451">        sql = &quot; select nomecli as NOME from tbclientes where idcli = ? order by idcli &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L456">            pst = conexao.prepareStatement( sql );</span>
+
+            // PEGANDO O ID DO CLIENTE NOS CAMPOS DE TEXTO E COLOCANDO NO BANDO DE DADOS
+<span class="nc" id="L459">            pst.setString( 1, txtCliPesId.getText() );</span>
+           
+           // CONEXÃO PARA PESQUISAR E INSERIR OS DADOS DO BANCO DE DADOS
+<span class="nc" id="L462">           rs = pst.executeQuery();</span>
+           
+           // TRAZENDO E COLOCANDO OS DADOS NA TABELA
+<span class="nc" id="L465">           tblCli2.setModel( DbUtils.resultSetToTableModel( rs ) );</span>
+        }
+        
+<span class="nc" id="L468">        catch ( Exception e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L471">            System.out.println( e );</span>
+<span class="nc" id="L472">        }</span>
+<span class="nc" id="L473">    }//GEN-LAST:event_txtCliPesIdKeyReleased</span>
+    private void tblCli1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCli1MouseClicked
+
+        // EVENTO PARA SETAR NOS CAMPOS OS DADOS NA TABELA PELO CLIQUE DO MOUSE
+        int setar;
+        
+<span class="nc" id="L479">        setar = tblCli1.getSelectedRow();</span>
+ 
+        // PEGANDO OS DADOS DA TABELA E COM UM CLIQUE COLOCANDO NO CAMPO DE TEXTO
+<span class="nc" id="L482">        txtCliId.setText( tblCli1.getModel().getValueAt( setar, 0 ).toString() );</span>
+<span class="nc" id="L483">        txtCliNom.setText( tblCli1.getModel().getValueAt( setar, 1 ).toString() );</span>
+<span class="nc" id="L484">        txtCliEnd.setText( tblCli1.getModel().getValueAt( setar, 2 ).toString() );</span>
+<span class="nc" id="L485">        txtCliFon.setText( tblCli1.getModel().getValueAt( setar, 3 ).toString() );</span>
+<span class="nc" id="L486">        txtCliEma.setText( tblCli1.getModel().getValueAt( setar, 4 ).toString() );</span>
+        
+<span class="nc" id="L488">        btnCliIns.setEnabled(false);</span>
+<span class="nc" id="L489">    }//GEN-LAST:event_tblCli1MouseClicked</span>
+    private void btnCliAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliAltActionPerformed
+
+        // MÉTODO ALTERAR
+<span class="nc" id="L493">        int adicionado = 0;</span>
+        String sql;
+               
+        // ATUALIZANDO A TABELA CLIENTES ONDE O IDCLI = ?
+<span class="nc" id="L497">        sql = &quot; update tbclientes set nomecli = ?, fonecli = ?, endcli = ?, emailcli = ? where idcli = ? &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L502">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGAR NOME, FONE, ENDEREÇO, EMAIL, ID DO CLIENTE NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+            // NOMECLI = ? (1), CLIFON = ? (2), CLIEND = ? (3), CLIEMA = ? (4) CLIID = ? (5)
+<span class="nc" id="L506">            pst.setString( 1, txtCliNom.getText() );</span>
+<span class="nc" id="L507">            pst.setString( 2, txtCliFon.getText() );</span>
+<span class="nc" id="L508">            pst.setString( 3, txtCliEnd.getText() );</span>
+<span class="nc" id="L509">            pst.setString( 4, txtCliEma.getText() );</span>
+<span class="nc" id="L510">            pst.setString( 5, txtCliId.getText() );</span>
+            
+            // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS 
+<span class="nc bnc" id="L513" title="All 4 branches missed.">            if ( txtCliNom.getText().isEmpty() || txtCliFon.getText().isEmpty() )</span>
+            {
+<span class="nc" id="L515">                JOptionPane.showMessageDialog( null, &quot; POR FAVOR, PREENCHA OS CAMPOS OBRIGATÓRIOS &quot; );</span>
+            }
+            
+            else
+            {
+                // CONEXÃO PARA INSERIR NO BANCO DE DADOS
+<span class="nc" id="L521">                adicionado = pst.executeUpdate();</span>
+
+                // SAÍDA DE VALOR 1;  
+<span class="nc" id="L524">                System.out.println( adicionado );</span>
+            }
+            
+<span class="nc bnc" id="L527" title="All 2 branches missed.">            if( adicionado &gt; 0 )</span>
+            {
+                // LIMPAR CAMPOS
+<span class="nc" id="L530">                txtCliPesId.setText(&quot;&quot;);</span>
+<span class="nc" id="L531">                txtCliPesNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L532">                txtCliId.setText(&quot;&quot;);</span>
+<span class="nc" id="L533">                txtCliNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L534">                txtCliFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L535">                txtCliEnd.setText(&quot;&quot;);</span>
+<span class="nc" id="L536">                txtCliEma.setText(&quot;&quot;);</span>
+                
+<span class="nc" id="L538">                JOptionPane.showMessageDialog( null, &quot; DADOS DO USUÁRIO ALTERADOS COM SUCESSO &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+                
+                // REAPARECER O BOTTÃO ADICIONAR
+<span class="nc" id="L541">                btnCliIns.setEnabled(true);                </span>
+            }
+            
+            else
+            {
+<span class="nc" id="L546">                JOptionPane.showMessageDialog( null, &quot; USUÁRIO NÃO ALTERADO &quot;,  &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+            }            
+        }
+        
+<span class="nc" id="L550">        catch ( SQLException | HeadlessException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L553">            System.out.println( e );</span>
+<span class="nc" id="L554">        }</span>
+<span class="nc" id="L555">    }//GEN-LAST:event_btnCliAltActionPerformed</span>
+    private void btnCliExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliExcActionPerformed
+      
+        // MÉTODO PARA EXCLUIR
+        int apagado;
+        int decisao;
+        String sql;
+        
+<span class="nc" id="L563">        decisao = JOptionPane.showConfirmDialog( null, &quot; TEM CERTEZA QUE DESEJA REMOVER O USUÁRIO ? &quot;, &quot; ATENÇÃO &quot;, JOptionPane.YES_NO_OPTION );</span>
+        
+        // ESTRUTURA DE DECISÃO
+<span class="nc bnc" id="L566" title="All 2 branches missed.">        if ( decisao == JOptionPane.YES_OPTION )</span>
+        {
+            // MÉTODO EXCLUSÃO - EXCLUIR USUÁRIO DA TABELA TBUSUARIO ONDE O IDUSER = ?
+<span class="nc" id="L569">            sql = &quot; delete from tbclientes where idcli = ? &quot;;</span>
+            
+            try
+            {
+                // PREPARANDO CONEXÃO
+<span class="nc" id="L574">                pst = conexao.prepareStatement(sql);</span>
+                
+                // PEGAR ID DO CLIENTE NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+<span class="nc" id="L577">                pst.setString( 1, txtCliId.getText() );</span>
+                
+                // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
+<span class="nc bnc" id="L580" title="All 8 branches missed.">                if ( txtCliNom.getText().isEmpty() || txtCliFon.getText().isEmpty() || txtCliEnd.getText().isEmpty() || txtCliEma.getText().isEmpty() )</span>
+                {
+<span class="nc" id="L582">                    JOptionPane.showMessageDialog( null, &quot; TODOS OS CAMPOS DEVEM ESTAR PREENCHIDOS PARA A EXCLUSÃO SER FEITA &quot; );</span>
+                }
+                
+                // CONEXÃO PARA DELETAR NO BANCO DE DADOS
+<span class="nc" id="L586">                apagado = pst.executeUpdate();</span>
+                
+<span class="nc bnc" id="L588" title="All 2 branches missed.">                if( apagado &gt; 0 )</span>
+                {
+                    // LIMPAR CAMPOS
+<span class="nc" id="L591">                    txtCliPesId.setText(&quot;&quot;);</span>
+<span class="nc" id="L592">                    txtCliPesNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L593">                    txtCliId.setText(&quot;&quot;);</span>
+<span class="nc" id="L594">                    txtCliNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L595">                    txtCliFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L596">                    txtCliEnd.setText(&quot;&quot;);</span>
+<span class="nc" id="L597">                    txtCliEma.setText(&quot;&quot;);</span>
+                
+<span class="nc" id="L599">                    JOptionPane.showMessageDialog( null, &quot; USUÁRIO REMOVIDO COM SUCESSO &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+                } 
+                
+                else
+                {
+<span class="nc" id="L604">                    JOptionPane.showMessageDialog( null, &quot; USUÁRIO REMOVIDO COM SUCESSO &quot;, &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+                }
+            }
+            
+<span class="nc" id="L608">            catch ( SQLException | HeadlessException e )</span>
+            {
+                // APOIO AO ERRO
+<span class="nc" id="L611">                System.out.println( e );</span>
+<span class="nc" id="L612">            }</span>
+        }
+        
+<span class="nc bnc" id="L615" title="All 2 branches missed.">        else if ( decisao == JOptionPane.NO_OPTION )</span>
+        {
+<span class="nc" id="L617">            JOptionPane.showMessageDialog( null, &quot; ENTENDIDO &quot; );</span>
+        }        
+<span class="nc" id="L619">    }//GEN-LAST:event_btnCliExcActionPerformed</span>
+    private void btnCliLimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliLimActionPerformed
+       
+        // CAMPOS LIMPOS
+<span class="nc bnc" id="L623" title="All 14 branches missed.">        if ( txtCliId.getText().isEmpty() &amp;&amp; txtCliNom.getText().isEmpty() &amp;&amp; txtCliEnd.getText().isEmpty() &amp;&amp;  txtCliFon.getText().isEmpty() &amp;&amp; txtCliEma.getText().isEmpty() &amp;&amp; txtCliPesNom.getText().isEmpty() &amp;&amp; txtCliPesId.getText().isEmpty() )</span>
+        {
+<span class="nc" id="L625">            JOptionPane.showMessageDialog( null, &quot; CAMPOS ENCONTRAM-SE LIMPOS &quot; );</span>
+        }
+        
+        else
+        {
+            // LIMPAR CAMPOS 
+<span class="nc" id="L631">            txtCliId.setText(&quot;&quot;);</span>
+<span class="nc" id="L632">            txtCliNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L633">            txtCliEnd.setText(&quot;&quot;);</span>
+<span class="nc" id="L634">            txtCliFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L635">            txtCliEma.setText(&quot;&quot;);</span>
+<span class="nc" id="L636">            txtCliPesNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L637">            txtCliPesId.setText(&quot;&quot;);</span>
+<span class="nc" id="L638">            btnCliIns.setEnabled(true);</span>
+        }
+<span class="nc" id="L640">    }//GEN-LAST:event_btnCliLimActionPerformed</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCliAlt;
+    private javax.swing.JButton btnCliExc;
+    private javax.swing.JButton btnCliIns;
+    private javax.swing.JButton btnCliLim;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tblCli1;
+    private javax.swing.JTable tblCli2;
+    private javax.swing.JTextField txtCliEma;
+    private javax.swing.JTextField txtCliEnd;
+    private javax.swing.JFormattedTextField txtCliFon;
+    private javax.swing.JTextField txtCliId;
+    private javax.swing.JTextField txtCliNom;
+    private javax.swing.JTextField txtCliPesId;
+    private javax.swing.JTextField txtCliPesNom;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

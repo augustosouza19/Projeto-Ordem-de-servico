@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>C_TELA_PRINCIPAL.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ISERJ_3.5_-_PROJETO_FINAL_ECS&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">A_GUI</a> &gt; <span class="el_source">C_TELA_PRINCIPAL.java</span></div><h1>C_TELA_PRINCIPAL.java</h1><pre class="source lang-java linenums">package A_GUI;
+
+// CONEXÃO
+
+
+// DATAS
+import B_CONEXAO_MYSQL.CONEXAO;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+// IMPORTAÇÃO JGOODIES - ESTILO DO JAVA
+import com.jgoodies.looks.plastic.theme.DarkStar;
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+
+// LINKS
+import java.net.URI;
+
+// TRATAMENTO DE EXCEÇÕES
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.net.URISyntaxException;
+import java.io.FileNotFoundException;
+import com.itextpdf.text.DocumentException;
+import javax.swing.UnsupportedLookAndFeelException;
+
+// POCOTE SWING
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.JOptionPane;
+
+// ARQUIVOS PDF, E CAMINHO 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.awt.Desktop;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.sql.Connection;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
+
+
+public class C_TELA_PRINCIPAL extends javax.swing.JFrame 
+{
+    private File file;
+    
+    // VARÁVEIS ESPECIAIS DE CONEXÃO AO BANCO DE DADOS
+<span class="nc" id="L56">    Connection conexao = null; </span>
+
+    // CONSTRUTOR
+    public C_TELA_PRINCIPAL()
+<span class="nc" id="L60">    {</span>
+<span class="nc" id="L61">        initComponents();</span>
+
+        // MÉTODO CONECTOR
+<span class="nc" id="L64">        conexao = CONEXAO.conector();</span>
+<span class="nc" id="L65">        System.out.println(conexao);</span>
+
+        // INSTANCIAÇÃO DE UM RELÓGIO EM TEMPO REAL
+<span class="nc" id="L68">        Thread relogioThread = new Thread( new C_TELA_PRINCIPAL.HoraThread () );</span>
+<span class="nc" id="L69">        relogioThread.start();</span>
+<span class="nc" id="L70">    }</span>
+    
+    // CLASSE CONTENDO A HORA EM TEMPO REAL  
+<span class="nc" id="L73">    class HoraThread implements Runnable</span>
+    {
+        // REESCRIÇÃO DE UM MÉTODO
+        @Override
+        public void run() 
+        {
+           while ( true )
+           {
+               // INSTANCIANDO HORA EM TEMPO REAL
+<span class="nc" id="L82">               DateFormat formatoHora = new SimpleDateFormat(&quot;HH:mm:ss&quot;);</span>
+               
+               // COLOCANDO HORA NA LBLHORATEMREA
+<span class="nc" id="L85">               lblHoraNov.setText( formatoHora.format( new Date() ) );</span>
+            
+               try
+               {
+<span class="nc" id="L89">                   Thread.sleep( 1000 );</span>
+               }
+               
+<span class="nc" id="L92">               catch ( InterruptedException e )</span>
+               {
+                   
+<span class="nc" id="L95">               }</span>
+<span class="nc" id="L96">           }</span>
+        }
+    }
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L103">        DesktopPanel = new javax.swing.JDesktopPane();</span>
+<span class="nc" id="L104">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L105">        lblUsu = new javax.swing.JLabel();</span>
+<span class="nc" id="L106">        lblDat = new javax.swing.JLabel();</span>
+<span class="nc" id="L107">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L108">        lblDataNov = new javax.swing.JLabel();</span>
+<span class="nc" id="L109">        lblHoraNov = new javax.swing.JLabel();</span>
+<span class="nc" id="L110">        Men = new javax.swing.JMenuBar();</span>
+<span class="nc" id="L111">        MenCad = new javax.swing.JMenu();</span>
+<span class="nc" id="L112">        MenCadCli = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L113">        MenCadOs = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L114">        MenCadUsu = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L115">        MenRel = new javax.swing.JMenu();</span>
+<span class="nc" id="L116">        MenRelCli = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L117">        MenRelSer = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L118">        MenAju = new javax.swing.JMenu();</span>
+<span class="nc" id="L119">        MenAjuSob = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L120">        MenAjuTel = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L121">        MenAjuLem = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L122">        MenAjuLin = new javax.swing.JMenuItem();</span>
+<span class="nc" id="L123">        MenOpc = new javax.swing.JMenu();</span>
+<span class="nc" id="L124">        MenOpcSai = new javax.swing.JMenuItem();</span>
+
+<span class="nc" id="L126">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L127">        setTitle(&quot;PRINCIPAL&quot;);</span>
+<span class="nc" id="L128">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L130">                formWindowActivated(evt);</span>
+<span class="nc" id="L131">            }</span>
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L133">                formWindowOpened(evt);</span>
+<span class="nc" id="L134">            }</span>
+        });
+
+<span class="nc" id="L137">        javax.swing.GroupLayout DesktopPanelLayout = new javax.swing.GroupLayout(DesktopPanel);</span>
+<span class="nc" id="L138">        DesktopPanel.setLayout(DesktopPanelLayout);</span>
+<span class="nc" id="L139">        DesktopPanelLayout.setHorizontalGroup(</span>
+<span class="nc" id="L140">            DesktopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L141">            .addGap(0, 922, Short.MAX_VALUE)</span>
+        );
+<span class="nc" id="L143">        DesktopPanelLayout.setVerticalGroup(</span>
+<span class="nc" id="L144">            DesktopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L145">            .addGap(0, 0, Short.MAX_VALUE)</span>
+        );
+
+<span class="nc" id="L148">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_IMAGENS/lo_medio.png&quot;))); // NOI18N</span>
+
+<span class="nc" id="L150">        lblUsu.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L151">        lblUsu.setText(&quot;USUÁRIO&quot;);</span>
+
+<span class="nc" id="L153">        lblDat.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L154">        lblDat.setText(&quot;DATA&quot;);</span>
+
+<span class="nc" id="L156">        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));</span>
+
+<span class="nc" id="L158">        lblDataNov.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L159">        lblDataNov.setForeground(new java.awt.Color(255, 255, 0));</span>
+<span class="nc" id="L160">        lblDataNov.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L161">        lblDataNov.setText(&quot;DATA&quot;);</span>
+
+<span class="nc" id="L163">        lblHoraNov.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L164">        lblHoraNov.setForeground(new java.awt.Color(255, 255, 0));</span>
+<span class="nc" id="L165">        lblHoraNov.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L166">        lblHoraNov.setText(&quot;HORA&quot;);</span>
+
+<span class="nc" id="L168">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L169">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L170">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L171">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L172">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L173">                .addContainerGap()</span>
+<span class="nc" id="L174">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L175">                    .addComponent(lblDataNov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L176">                    .addComponent(lblHoraNov, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))</span>
+<span class="nc" id="L177">                .addContainerGap(25, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L179">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L180">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L181">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L182">                .addContainerGap()</span>
+<span class="nc" id="L183">                .addComponent(lblDataNov)</span>
+<span class="nc" id="L184">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L185">                .addComponent(lblHoraNov)</span>
+<span class="nc" id="L186">                .addContainerGap(20, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L189">        MenCad.setText(&quot;CADASTRO&quot;);</span>
+
+<span class="nc" id="L191">        MenCadCli.setText(&quot;Cliente&quot;);</span>
+<span class="nc" id="L192">        MenCadCli.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L194">                MenCadCliActionPerformed(evt);</span>
+<span class="nc" id="L195">            }</span>
+        });
+<span class="nc" id="L197">        MenCad.add(MenCadCli);</span>
+
+<span class="nc" id="L199">        MenCadOs.setText(&quot;OS&quot;);</span>
+<span class="nc" id="L200">        MenCadOs.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L202">                MenCadOsActionPerformed(evt);</span>
+<span class="nc" id="L203">            }</span>
+        });
+<span class="nc" id="L205">        MenCad.add(MenCadOs);</span>
+
+<span class="nc" id="L207">        MenCadUsu.setText(&quot;Usuários&quot;);</span>
+<span class="nc" id="L208">        MenCadUsu.setEnabled(false);</span>
+<span class="nc" id="L209">        MenCadUsu.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L211">                MenCadUsuActionPerformed(evt);</span>
+<span class="nc" id="L212">            }</span>
+        });
+<span class="nc" id="L214">        MenCad.add(MenCadUsu);</span>
+
+<span class="nc" id="L216">        Men.add(MenCad);</span>
+
+<span class="nc" id="L218">        MenRel.setText(&quot;RELATÓRIO&quot;);</span>
+<span class="nc" id="L219">        MenRel.setEnabled(false);</span>
+
+<span class="nc" id="L221">        MenRelCli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));</span>
+<span class="nc" id="L222">        MenRelCli.setText(&quot;Clientes&quot;);</span>
+<span class="nc" id="L223">        MenRelCli.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L225">                MenRelCliActionPerformed(evt);</span>
+<span class="nc" id="L226">            }</span>
+        });
+<span class="nc" id="L228">        MenRel.add(MenRelCli);</span>
+
+<span class="nc" id="L230">        MenRelSer.setText(&quot;Serviços&quot;);</span>
+<span class="nc" id="L231">        MenRel.add(MenRelSer);</span>
+
+<span class="nc" id="L233">        Men.add(MenRel);</span>
+
+<span class="nc" id="L235">        MenAju.setText(&quot;AJUDA&quot;);</span>
+
+<span class="nc" id="L237">        MenAjuSob.setText(&quot;Sobre&quot;);</span>
+<span class="nc" id="L238">        MenAjuSob.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L240">                MenAjuSobActionPerformed(evt);</span>
+<span class="nc" id="L241">            }</span>
+        });
+<span class="nc" id="L243">        MenAju.add(MenAjuSob);</span>
+
+<span class="nc" id="L245">        MenAjuTel.setText(&quot;Telefones&quot;);</span>
+<span class="nc" id="L246">        MenAjuTel.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L248">                MenAjuTelActionPerformed(evt);</span>
+<span class="nc" id="L249">            }</span>
+        });
+<span class="nc" id="L251">        MenAju.add(MenAjuTel);</span>
+
+<span class="nc" id="L253">        MenAjuLem.setText(&quot;Lembretes&quot;);</span>
+<span class="nc" id="L254">        MenAjuLem.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L256">                MenAjuLemActionPerformed(evt);</span>
+<span class="nc" id="L257">            }</span>
+        });
+<span class="nc" id="L259">        MenAju.add(MenAjuLem);</span>
+
+<span class="nc" id="L261">        MenAjuLin.setText(&quot;Link de Ajuda&quot;);</span>
+<span class="nc" id="L262">        MenAjuLin.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L264">                MenAjuLinActionPerformed(evt);</span>
+<span class="nc" id="L265">            }</span>
+        });
+<span class="nc" id="L267">        MenAju.add(MenAjuLin);</span>
+
+<span class="nc" id="L269">        Men.add(MenAju);</span>
+
+<span class="nc" id="L271">        MenOpc.setText(&quot;OPÇÕES&quot;);</span>
+
+<span class="nc" id="L273">        MenOpcSai.setText(&quot;Sair&quot;);</span>
+<span class="nc" id="L274">        MenOpcSai.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L276">                MenOpcSaiActionPerformed(evt);</span>
+<span class="nc" id="L277">            }</span>
+        });
+<span class="nc" id="L279">        MenOpc.add(MenOpcSai);</span>
+
+<span class="nc" id="L281">        Men.add(MenOpc);</span>
+
+<span class="nc" id="L283">        setJMenuBar(Men);</span>
+
+<span class="nc" id="L285">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L286">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L287">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L288">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L289">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L290">                .addComponent(DesktopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L291">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L292">                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="nc" id="L293">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L294">                        .addComponent(jLabel1))</span>
+<span class="nc" id="L295">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L296">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L297">                            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L298">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L299">                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L300">                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L301">                                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L302">                                    .addGap(43, 43, 43)</span>
+<span class="nc" id="L303">                                    .addComponent(lblDat, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L304">                                .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L305">                                    .addGap(20, 20, 20)</span>
+<span class="nc" id="L306">                                    .addComponent(lblUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L307">                        .addGap(0, 0, Short.MAX_VALUE)))</span>
+<span class="nc" id="L308">                .addContainerGap(16, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L310">        layout.setVerticalGroup(</span>
+<span class="nc" id="L311">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L312">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L313">                .addContainerGap()</span>
+<span class="nc" id="L314">                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L315">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L316">                .addComponent(lblUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L317">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L318">                .addComponent(lblDat)</span>
+<span class="nc" id="L319">                .addGap(47, 47, 47)</span>
+<span class="nc" id="L320">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L321">                .addContainerGap(244, Short.MAX_VALUE))</span>
+<span class="nc" id="L322">            .addComponent(DesktopPanel)</span>
+        );
+
+<span class="nc" id="L325">        setSize(new java.awt.Dimension(1366, 768));</span>
+<span class="nc" id="L326">        setLocationRelativeTo(null);</span>
+<span class="nc" id="L327">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        // CÓDIGO PARA A TELA PRINCIPAL MUDAR DE DE ESTILO QUANDO ABRIR
+        try 
+        {
+            // MUDANÇA DE ESTILO
+<span class="nc" id="L335">            PlasticLookAndFeel.setPlasticTheme( new DarkStar () );</span>
+            
+            try
+            {
+<span class="nc" id="L339">                UIManager.setLookAndFeel(&quot;com.jgoodies.looks.plastic.Plastic3DLookAndFeel&quot;);</span>
+            }
+            
+<span class="nc" id="L342">            catch ( InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e )</span>
+            {
+<span class="nc" id="L344">                Logger.getLogger( C_TELA_PRINCIPAL.class.getName() ).log( Level.SEVERE, null, e );</span>
+<span class="nc" id="L345">            }</span>
+        }
+        
+<span class="nc" id="L348">        catch ( ClassNotFoundException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L351">            System.out.println( e );            </span>
+<span class="nc" id="L352">        }</span>
+        
+<span class="nc" id="L354">        SwingUtilities.updateComponentTreeUI( this );</span>
+        
+        // DATA NO FORMATO - 25/12/2016
+<span class="nc" id="L357">        Date dataSistema = new Date();</span>
+        
+<span class="nc" id="L359">        SimpleDateFormat formato = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L360">        lblDataNov.setText( formato.format( dataSistema ) ); </span>
+<span class="nc" id="L361">    }//GEN-LAST:event_formWindowOpened</span>
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+        // SUBSTITUIÇÃO A LBLDAT PELA DATA ATUAL DO SISTEMA AO INICIALIZAR O FORM - JANELA ATIVADA
+        
+        // INSTANCIAÇÃO DO OBJETO DATA E A SUA FORMATAÇÃO
+<span class="nc" id="L367">        Date data = new Date();</span>
+<span class="nc" id="L368">        DateFormat formatador = DateFormat.getDateInstance( DateFormat.FULL );</span>
+        
+        // COLOCAR DENTRO DA VARIÁVEL LBLDAT
+<span class="nc" id="L371">        lblDat.setText( formatador.format( data ) ); </span>
+<span class="nc" id="L372">    }//GEN-LAST:event_formWindowActivated</span>
+
+    private void MenOpcSaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenOpcSaiActionPerformed
+
+        // CAIXA DE DIÁLOGO
+        int sair;
+        
+<span class="nc" id="L379">        sair = JOptionPane.showConfirmDialog( null, &quot; TEM CERTEZA QUE DESEJA SAIR ? &quot;, &quot; ATENÇÃO !&quot;, JOptionPane.YES_NO_OPTION );</span>
+
+        // ESTRUTURA DE DECISÃO
+<span class="nc bnc" id="L382" title="All 2 branches missed.">        if( sair == JOptionPane.YES_OPTION )</span>
+        {
+<span class="nc" id="L384">            System.exit(0);           </span>
+        }
+        
+        else
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L390">            System.err.println();</span>
+        }        
+<span class="nc" id="L392">    }//GEN-LAST:event_MenOpcSaiActionPerformed</span>
+
+    private void MenAjuSobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuSobActionPerformed
+
+        // CHAMAR A TELA SOBRE
+        
+        // INSTANCIAÇÃO DA TELA SOBRE
+<span class="nc" id="L399">        D_TELA_SOBRE tl = new D_TELA_SOBRE();</span>
+        
+        // TORNAR A TELA SOBRE VISÍVEL E DENTRO DO DESKTOP
+<span class="nc" id="L402">        tl.setVisible( true );        </span>
+<span class="nc" id="L403">        DesktopPanel.add( tl );      </span>
+<span class="nc" id="L404">    }//GEN-LAST:event_MenAjuSobActionPerformed</span>
+
+    private void MenCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUsuActionPerformed
+       
+        // CHAMAR A TELA USUÁRIO
+        
+        // INSTANCIAÇÃO DA TELA USUÁRIO
+<span class="nc" id="L411">        E_TELA_USUARIO tu = new E_TELA_USUARIO();</span>
+        
+        // TORNAR A TELA USUÁRIO VISÍVEL E DENTRO DO DESKTOP
+<span class="nc" id="L414">        tu.setVisible( true );        </span>
+<span class="nc" id="L415">        DesktopPanel.add( tu ); </span>
+<span class="nc" id="L416">    }//GEN-LAST:event_MenCadUsuActionPerformed</span>
+
+    private void MenCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCliActionPerformed
+
+        // CHAMAR A TELA CLIENTE
+        
+        // INSTANCIAÇÃO DA TELA CLIENTE
+<span class="nc" id="L423">        F_TELA_CLIENTE tc = new F_TELA_CLIENTE();</span>
+        
+        // TORNAR A TELA CLIENTE VISÍVEL E DENTRO DO DESKTOP
+<span class="nc" id="L426">        tc.setVisible( true );        </span>
+<span class="nc" id="L427">        DesktopPanel.add( tc );</span>
+<span class="nc" id="L428">    }//GEN-LAST:event_MenCadCliActionPerformed</span>
+
+    private void MenCadOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadOsActionPerformed
+       
+        // CHAMAR A TELA SOBRE
+        
+        // INSTANCIAÇÃO DA TELA SOBRE
+<span class="nc" id="L435">        G_TELA_OS tp = new G_TELA_OS();</span>
+        
+        // TORNAR A TELA SOBRE VISÍVEL E DENTRO DO DESKTOP
+<span class="nc" id="L438">        tp.setVisible( true );        </span>
+<span class="nc" id="L439">        DesktopPanel.add( tp );</span>
+<span class="nc" id="L440">    }//GEN-LAST:event_MenCadOsActionPerformed</span>
+
+    private void MenAjuLinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuLinActionPerformed
+
+        // CHAMADA DE LINK PARA A AJUDA - LMGTFY
+        try
+        {
+<span class="nc" id="L447">            URI link = new URI(&quot;http://bfy.tw/98Bg&quot;);</span>
+<span class="nc" id="L448">            Desktop.getDesktop().browse(link);</span>
+        }
+        
+<span class="nc" id="L451">        catch( URISyntaxException | IOException error )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L454">            System.err.println(error);</span>
+<span class="nc" id="L455">        }        </span>
+<span class="nc" id="L456">    }//GEN-LAST:event_MenAjuLinActionPerformed</span>
+
+    private void MenAjuTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuTelActionPerformed
+
+        // SALVAR EM UM ARQUIVO PDF
+<span class="nc" id="L461">        Document document = new Document();</span>
+        
+        try
+        {
+<span class="nc" id="L465">            PdfWriter.getInstance( document, new FileOutputStream( &quot;LISTA.pdf&quot;) );</span>
+            
+            // ABRIR DOCUMENTO 
+<span class="nc" id="L468">            document.open();</span>
+            
+            // TEXTO DO PDF
+<span class="nc" id="L471">            document.add( new Paragraph(&quot;----- LISTA COM TELEFONES -----&quot;));</span>
+<span class="nc" id="L472">            document.add( new Paragraph(&quot; TELEFONES 1:1212 &quot;));</span>
+<span class="nc" id="L473">            document.add( new Paragraph(&quot; TELEFONES 2:12121212 &quot;));</span>
+<span class="nc" id="L474">            document.add( new Paragraph(&quot; TELEFONES 3:1212121212 &quot;));</span>
+<span class="nc" id="L475">            document.add( new Paragraph(&quot; TELEFONES 4:121212121212 &quot;));</span>
+<span class="nc" id="L476">            document.add( new Paragraph(&quot; TELEFONES 5:212121212121212 &quot;));</span>
+        }
+        
+<span class="nc" id="L479">        catch ( DocumentException | FileNotFoundException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L482">            System.out.println( e );</span>
+        }
+        
+        // FECHANDO DOCUMENTO
+        finally
+        {
+<span class="nc" id="L488">            document.close();</span>
+<span class="nc" id="L489">        } </span>
+        
+        // GERANDO UM ARQUIVO PDF
+        try
+        {
+<span class="nc" id="L494">            Desktop.getDesktop().open( new File( &quot;LISTA.pdf&quot;) );</span>
+        }
+        
+<span class="nc" id="L497">        catch( IOException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L500">            System.err.println( e );           </span>
+<span class="nc" id="L501">        }    </span>
+<span class="nc" id="L502">    }//GEN-LAST:event_MenAjuTelActionPerformed</span>
+
+    private void MenAjuLemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuLemActionPerformed
+  
+        // ESCREVENDO UM LEMBRETE RÁPIDO NA CAIXA DE DIÁLOGO
+        String texto;
+        Path caminho;
+        byte[] textoemByte;
+
+        // CAMINHO
+<span class="nc" id="L512">        caminho = Paths.get(&quot;C:\\Users\\S\\Desktop\\Teste.txt&quot;);</span>
+        
+<span class="nc" id="L514">        texto = JOptionPane.showInputDialog( null, &quot; ESCREVA AS SUAS ANOTAÇÕES ? &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+<span class="nc" id="L515">        textoemByte = texto.getBytes();</span>
+        
+        try
+        {
+<span class="nc" id="L519">            Files.write( caminho, textoemByte );</span>
+        }
+        
+<span class="nc" id="L522">        catch ( IOException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L525">            System.err.println( e );           </span>
+<span class="nc" id="L526">        }    </span>
+<span class="nc" id="L527">    }//GEN-LAST:event_MenAjuLemActionPerformed</span>
+
+    private void MenRelCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenRelCliActionPerformed
+
+        // GERANDO UM RELATÓRIO DE CLIENTES
+        int confirma;
+        
+<span class="nc" id="L534">        confirma = JOptionPane.showConfirmDialog( null, &quot; CONFIRMA A IMPRESSÃO DESTE RELATÓRIO ?&quot;, &quot; ATENÇÃO &quot;, JOptionPane.YES_NO_OPTION );</span>
+        
+        // IMPRIMINDO RELATÓRIO COM JASPER REPORTS
+<span class="nc bnc" id="L537" title="All 2 branches missed.">        if ( confirma == JOptionPane.YES_OPTION )</span>
+        {
+            try 
+            {
+                // CLASSE JASPER PRINT PARA PREPARAR A IMPRESSÃO DE UM RELATÓRIO
+<span class="nc" id="L542">                JasperPrint print = JasperFillManager.fillReport(&quot;C:\\Users\\S\\Documents\\NetBeansProjects\\ISERJ 3.5 - PROJETO_FINAL_ECS\\src\\A_GUI\\RELATORIO.jasper&quot;, null, conexao );</span>
+              
+                //EXIBIÇÃO DE RELATÓRIO
+<span class="nc" id="L545">                JasperViewer.viewReport( print, false );</span>
+            }
+            
+<span class="nc" id="L548">            catch ( Exception e ) </span>
+            {
+<span class="nc" id="L550">                System.out.println( e );                </span>
+<span class="nc" id="L551">            }</span>
+            
+        }    
+<span class="nc" id="L554">    }//GEN-LAST:event_MenRelCliActionPerformed</span>
+
+    public static void main( String args[] ) 
+    {
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+<span class="nc bnc" id="L563" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L564" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L565">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L566">                    break;</span>
+                }
+            }
+<span class="nc" id="L569">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L570">            java.util.logging.Logger.getLogger(C_TELA_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L571">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L572">            java.util.logging.Logger.getLogger(C_TELA_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L573">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L574">            java.util.logging.Logger.getLogger(C_TELA_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L575">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L576">            java.util.logging.Logger.getLogger(C_TELA_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L577">        }</span>
+        //&lt;/editor-fold&gt;
+
+<span class="nc" id="L580">        java.awt.EventQueue.invokeLater( new Runnable()</span>
+<span class="nc" id="L581">        {</span>
+            public void run() 
+            {
+<span class="nc" id="L584">                new C_TELA_PRINCIPAL().setVisible( true );</span>
+<span class="nc" id="L585">            }</span>
+        });
+<span class="nc" id="L587">    }</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane DesktopPanel;
+    private javax.swing.JMenuBar Men;
+    private javax.swing.JMenu MenAju;
+    private javax.swing.JMenuItem MenAjuLem;
+    private javax.swing.JMenuItem MenAjuLin;
+    private javax.swing.JMenuItem MenAjuSob;
+    private javax.swing.JMenuItem MenAjuTel;
+    private javax.swing.JMenu MenCad;
+    private javax.swing.JMenuItem MenCadCli;
+    private javax.swing.JMenuItem MenCadOs;
+    public static javax.swing.JMenuItem MenCadUsu;
+    private javax.swing.JMenu MenOpc;
+    private javax.swing.JMenuItem MenOpcSai;
+    public static javax.swing.JMenu MenRel;
+    private javax.swing.JMenuItem MenRelCli;
+    private javax.swing.JMenuItem MenRelSer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblDat;
+    private javax.swing.JLabel lblDataNov;
+    private javax.swing.JLabel lblHoraNov;
+    public static javax.swing.JLabel lblUsu;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

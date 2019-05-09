@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>B_TELA_LOGIN.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ISERJ_3.5_-_PROJETO_FINAL_ECS&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">A_GUI</a> &gt; <span class="el_source">B_TELA_LOGIN.java</span></div><h1>B_TELA_LOGIN.java</h1><pre class="source lang-java linenums">package A_GUI;
+
+// CLASSE
+import B_CONEXAO_MYSQL.CONEXAO;
+
+// ESTILO DO JAVA
+import java.awt.Color;
+import java.awt.HeadlessException;
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.theme.DarkStar;
+
+// CONEXÕES
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+// EXCEÇÕES
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.SQLException;
+
+// CLASSES SWING
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
+public class B_TELA_LOGIN extends javax.swing.JFrame 
+{
+    // ATRIBUTOS
+    int cont;
+    
+    // VARÁVEIS ESPECIAIS DE CONEXÃO AO BANCO DE DADOS
+<span class="fc" id="L34">    Connection conexao = null; </span>
+<span class="fc" id="L35">    PreparedStatement pst = null; // Executar as instruções SQL </span>
+<span class="fc" id="L36">    ResultSet rs = null; // Exibe o resultado das instruções SQL</span>
+    
+    public B_TELA_LOGIN() 
+<span class="fc" id="L39">    {</span>
+<span class="fc" id="L40">        initComponents();  </span>
+        
+        // MÉTODO CONECTOR
+<span class="fc" id="L43">        conexao = CONEXAO.conector();</span>
+<span class="fc" id="L44">        System.out.println(conexao);</span>
+        
+        //  ESTRUTURA DE CONEXÃO
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if ( conexao != null )</span>
+        {
+            // COMANDO PARA TROCAR O ÍCONE QUANDO CONECTADO COM SUCESSO
+<span class="fc" id="L50">            lblStatus.setIcon( new javax.swing.ImageIcon ( getClass().getResource(&quot;/C_ICONES/database_go.png&quot;) ) );</span>
+        }
+        
+        else
+        {
+            // COMANDO PARA TROCAR O ÍCONE QUANDO CONECTADO COM SUCESSO
+<span class="nc" id="L56">            lblStatus.setIcon( new javax.swing.ImageIcon ( getClass().getResource(&quot;/C_ICONES/database_error.png&quot;) ) );</span>
+        }
+<span class="fc" id="L58">    }    </span>
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="fc" id="L63">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="fc" id="L64">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="fc" id="L65">        lblStatus = new javax.swing.JLabel();</span>
+<span class="fc" id="L66">        txtUsu = new javax.swing.JTextField();</span>
+<span class="fc" id="L67">        txtSen = new javax.swing.JPasswordField();</span>
+<span class="fc" id="L68">        btnLog = new javax.swing.JButton();</span>
+
+<span class="fc" id="L70">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L71">        setTitle(&quot;LOGIN&quot;);</span>
+<span class="fc" id="L72">        setResizable(false);</span>
+<span class="fc" id="L73">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+<span class="fc" id="L75">                formWindowOpened(evt);</span>
+<span class="fc" id="L76">            }</span>
+        });
+
+<span class="fc" id="L79">        jLabel1.setText(&quot;USUÁRIO :&quot;);</span>
+
+<span class="fc" id="L81">        jLabel2.setText(&quot;SENHA :&quot;);</span>
+
+<span class="fc" id="L83">        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/database_connect.png&quot;))); // NOI18N</span>
+
+<span class="fc" id="L85">        btnLog.setText(&quot;LOGIN&quot;);</span>
+<span class="fc" id="L86">        btnLog.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L88">                btnLogActionPerformed(evt);</span>
+<span class="nc" id="L89">            }</span>
+        });
+
+<span class="fc" id="L92">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="fc" id="L93">        getContentPane().setLayout(layout);</span>
+<span class="fc" id="L94">        layout.setHorizontalGroup(</span>
+<span class="fc" id="L95">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L96">            .addGroup(layout.createSequentialGroup()</span>
+<span class="fc" id="L97">                .addGap(22, 22, 22)</span>
+<span class="fc" id="L98">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="fc" id="L99">                    .addComponent(lblStatus)</span>
+<span class="fc" id="L100">                    .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L101">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="fc" id="L102">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="fc" id="L103">                            .addComponent(jLabel1)</span>
+<span class="fc" id="L104">                            .addComponent(jLabel2))</span>
+<span class="fc" id="L105">                        .addGap(18, 18, 18)</span>
+<span class="fc" id="L106">                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="fc" id="L107">                            .addComponent(txtUsu)</span>
+<span class="fc" id="L108">                            .addComponent(txtSen, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="fc" id="L109">                .addContainerGap(26, Short.MAX_VALUE))</span>
+        );
+<span class="fc" id="L111">        layout.setVerticalGroup(</span>
+<span class="fc" id="L112">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="fc" id="L113">            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()</span>
+<span class="fc" id="L114">                .addContainerGap()</span>
+<span class="fc" id="L115">                .addComponent(lblStatus)</span>
+<span class="fc" id="L116">                .addGap(18, 18, 18)</span>
+<span class="fc" id="L117">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="fc" id="L118">                    .addComponent(jLabel1)</span>
+<span class="fc" id="L119">                    .addComponent(txtUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="fc" id="L120">                .addGap(18, 18, 18)</span>
+<span class="fc" id="L121">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="fc" id="L122">                    .addComponent(jLabel2)</span>
+<span class="fc" id="L123">                    .addComponent(txtSen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="fc" id="L124">                .addGap(18, 18, 18)</span>
+<span class="fc" id="L125">                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="fc" id="L126">                .addContainerGap(18, Short.MAX_VALUE))</span>
+        );
+
+<span class="fc" id="L129">        setSize(new java.awt.Dimension(401, 208));</span>
+<span class="fc" id="L130">        setLocationRelativeTo(null);</span>
+<span class="fc" id="L131">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
+
+        // MÉTODO LOGAR
+        String sql;
+        String perfil;
+
+        // QUERY PARA SELECIONAR TUDO DA TABELA USUÁRIO COM O LOGIN E SENHA DO BANCO DE DADOS
+<span class="nc" id="L140">        sql = &quot; select * from tbusuario where login = ? and senha = ? &quot;;</span>
+
+        try 
+        {
+            // PREPARAR CONSULTA AO BANCO DE DADOS EM FUNÇÃO DO QUE FOI DIGITADO NA CAIXA DE TEXTO
+            // O &quot;?&quot; É SUBSTITUÍDO PELO CONTEÚDO DAS VARIÁVEIS
+<span class="nc" id="L146">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGAR LOGIN E SENHA DO USUÁRIO DO BANCO DE DADOS E COLOCAR NOS CAMPOS DE TEXTO
+<span class="nc" id="L149">            pst.setString( 1, txtUsu.getText() );</span>
+<span class="nc" id="L150">            pst.setString( 2, txtSen.getText() );</span>
+
+            // EXECUTA A QUERY
+<span class="nc" id="L153">            rs = pst.executeQuery();</span>
+
+            // SE EXISTIR USUÁRIO E SENHA CORRESPONDENTE
+<span class="nc bnc" id="L156" title="All 2 branches missed.">            if ( rs.next() ) </span>
+            {
+                // OBTÉM O CONTEÚDO PERFIL DA TABELA TBUSUARIO; DATABASE = DBINFOX
+<span class="nc" id="L159">                perfil = rs.getString(6);</span>
+<span class="nc" id="L160">                System.out.println( perfil );</span>
+                
+                // TRATAMENTO DO PERFIL DO USUÁRIO
+<span class="nc bnc" id="L163" title="All 2 branches missed.">                if( perfil.equals( &quot;admin&quot; ) )</span>
+                {
+                    // TELA DE LOGIN AUTOMATICAMENTE FECHA JUNTO COM A CONEXÃO
+<span class="nc" id="L166">                    this.dispose();</span>
+
+                    // TELA PRINCIPAL ABRE
+<span class="nc" id="L169">                    C_TELA_PRINCIPAL principal = new C_TELA_PRINCIPAL(); </span>
+<span class="nc" id="L170">                    principal.setVisible( true );</span>
+                    
+                    // MENREL, MENCADUSU, LBLUSU, LBLUSU SÃO VARIÁVEIS PÚBLICAS E ESTÁTICAS
+                    // LIBERANDO CAMPOS MERNREL E MENCADUSU
+<span class="nc" id="L174">                    C_TELA_PRINCIPAL.MenRel.setEnabled( true );</span>
+<span class="nc" id="L175">                    C_TELA_PRINCIPAL.MenCadUsu.setEnabled( true );</span>
+                    
+                    // MUDANDO A COR DA LUSU PARA VERMELHO
+<span class="nc" id="L178">                    C_TELA_PRINCIPAL.lblUsu.setText( rs.getString( 2 ) );</span>
+<span class="nc" id="L179">                    C_TELA_PRINCIPAL.lblUsu.setForeground( Color.RED );</span>
+<span class="nc" id="L180">                }</span>
+                
+                else
+                {
+                    // TELA DE LOGIN AUTOMATICAMENTE FECHA JUNTO COM A CONEXÃO
+<span class="nc" id="L185">                    this.dispose();</span>
+                    
+                    // TELA PRINCIPAL ABRE
+<span class="nc" id="L188">                    C_TELA_PRINCIPAL principal = new C_TELA_PRINCIPAL();  </span>
+                    
+<span class="nc" id="L190">                    principal.setVisible( true );</span>
+                    
+                    // LBLUSU, LBLUSU SÃO VARIÁVEIS PÚBLICAS E ESTÁTICAS
+                    // MUDANDO A COR DA LUSU PARA AZUL
+<span class="nc" id="L194">                    C_TELA_PRINCIPAL.lblUsu.setText( rs.getString( 2 ) );</span>
+<span class="nc" id="L195">                    C_TELA_PRINCIPAL.lblUsu.setForeground( Color.BLUE );</span>
+<span class="nc" id="L196">                }</span>
+            }
+            
+            else
+            {
+<span class="nc" id="L201">                JOptionPane.showMessageDialog( null, &quot; ACESSO NEGADO &quot;, &quot; ERRO DE ACESSO &quot;, JOptionPane.ERROR_MESSAGE );</span>
+<span class="nc" id="L202">                cont ++;</span>
+            }
+            
+<span class="nc bnc" id="L205" title="All 2 branches missed.">            if ( cont &gt; 3 )</span>
+            {
+<span class="nc" id="L207">                JOptionPane.showMessageDialog( null,&quot; ACESSO BLOQUEADO &quot;, &quot; ERRO DE ACESSO &quot;, JOptionPane.ERROR_MESSAGE );</span>
+<span class="nc" id="L208">                System.exit(0);</span>
+            }
+        }
+        
+<span class="nc" id="L212">        catch ( SQLException | HeadlessException e ) </span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L215">            System.out.println( e );</span>
+<span class="nc" id="L216">        }</span>
+<span class="nc" id="L217">    }//GEN-LAST:event_btnLogActionPerformed</span>
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        // CÓDIGO PARA A TELA PRINCIPAL MUDAR DE DE ESTILO QUANDO ABRIR
+        try 
+        {
+<span class="fc" id="L223">            PlasticLookAndFeel.setPlasticTheme( new DarkStar () );</span>
+            
+            try
+            {
+                // MUDANÇA DE ESTILO
+<span class="fc" id="L228">                UIManager.setLookAndFeel(&quot;com.jgoodies.looks.plastic.Plastic3DLookAndFeel&quot;);</span>
+            }
+            
+<span class="nc" id="L231">            catch ( InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex )</span>
+            {
+                // APOIO AO ERRO
+<span class="nc" id="L234">                Logger.getLogger( C_TELA_PRINCIPAL.class.getName() ).log( Level.SEVERE, null, ex );</span>
+<span class="fc" id="L235">            }</span>
+        }
+        
+<span class="nc" id="L238">        catch ( ClassNotFoundException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L241">            System.out.println( e );            </span>
+<span class="fc" id="L242">        }</span>
+                
+<span class="fc" id="L244">        SwingUtilities.updateComponentTreeUI( this );</span>
+<span class="fc" id="L245">    }//GEN-LAST:event_formWindowOpened</span>
+    public static void main(String args[]) 
+    {
+        //&lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Look and feel setting code (optional) &quot;&gt;
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try 
+        {
+<span class="nc bnc" id="L254" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels() ) </span>
+            {
+<span class="nc bnc" id="L256" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName() ) )</span>
+                {
+<span class="nc" id="L258">                    javax.swing.UIManager.setLookAndFeel( info.getClassName() );</span>
+<span class="nc" id="L259">                    break;</span>
+                }
+            }
+        }
+        
+<span class="nc" id="L264">        catch ( ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e ) </span>
+        {
+<span class="nc" id="L266">            java.util.logging.Logger.getLogger( B_TELA_LOGIN.class.getName() ).log( java.util.logging.Level.SEVERE, null, e );</span>
+<span class="nc" id="L267">        }</span>
+        
+<span class="nc" id="L269">        java.awt.EventQueue.invokeLater( new Runnable() </span>
+<span class="nc" id="L270">        {</span>
+            public void run() 
+            {
+<span class="nc" id="L273">                new B_TELA_LOGIN().setVisible( true );</span>
+<span class="nc" id="L274">            }</span>
+        });
+<span class="nc" id="L276">    }</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLog;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JPasswordField txtSen;
+    private javax.swing.JTextField txtUsu;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

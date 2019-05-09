@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>E_TELA_USUARIO.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;ISERJ_3.5_-_PROJETO_FINAL_ECS&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">A_GUI</a> &gt; <span class="el_source">E_TELA_USUARIO.java</span></div><h1>E_TELA_USUARIO.java</h1><pre class="source lang-java linenums">package A_GUI;
+
+// CLASSE
+import B_CONEXAO_MYSQL.CONEXAO;
+
+// EXCEÇÃO
+import java.sql.SQLException;
+import java.awt.HeadlessException;
+
+// CONEXÃO
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+// SWING
+import javax.swing.JOptionPane;
+
+// TABELA DINÂMICA
+import net.proteanit.sql.DbUtils;
+
+public class E_TELA_USUARIO extends javax.swing.JInternalFrame
+{
+    // ATRIBUTOS
+    int cont;
+    
+    // VARÁVEIS ESPECIAIS DE CONEXÃO AO BANCO DE DADOS
+<span class="nc" id="L27">    Connection conexao = null; </span>
+<span class="nc" id="L28">    PreparedStatement pst = null; // Executar as instruções SQL </span>
+<span class="nc" id="L29">    ResultSet rs = null; // Exibe o resultado das instruções SQL</span>
+       
+    public E_TELA_USUARIO()
+<span class="nc" id="L32">    {</span>
+<span class="nc" id="L33">        initComponents();</span>
+ 
+        // CONEXÃO ABERTA 
+<span class="nc" id="L36">        conexao = CONEXAO.conector();</span>
+<span class="nc" id="L37">    }</span>
+    
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L43">        jToolBar1 = new javax.swing.JToolBar();</span>
+<span class="nc" id="L44">        btnUsuIns = new javax.swing.JButton();</span>
+<span class="nc" id="L45">        btnUsuCon = new javax.swing.JButton();</span>
+<span class="nc" id="L46">        btnUsuAlt = new javax.swing.JButton();</span>
+<span class="nc" id="L47">        btnUsuExc = new javax.swing.JButton();</span>
+<span class="nc" id="L48">        jSeparator1 = new javax.swing.JToolBar.Separator();</span>
+<span class="nc" id="L49">        jPanel1 = new javax.swing.JPanel();</span>
+<span class="nc" id="L50">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L52">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L54">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L56">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L57">        txtUsuId = new javax.swing.JTextField();</span>
+<span class="nc" id="L58">        txtUsuNom = new javax.swing.JTextField();</span>
+<span class="nc" id="L59">        txtUsuLog = new javax.swing.JTextField();</span>
+<span class="nc" id="L60">        txtUsuSen = new javax.swing.JPasswordField();</span>
+<span class="nc" id="L61">        txtUsuFon = new javax.swing.JFormattedTextField();</span>
+<span class="nc" id="L62">        cboUsuPer = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L63">        btnUsuLim = new javax.swing.JButton();</span>
+<span class="nc" id="L64">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L65">        tblUsu = new javax.swing.JTable();</span>
+<span class="nc" id="L66">        jPanel2 = new javax.swing.JPanel();</span>
+<span class="nc" id="L67">        jLabel8 = new javax.swing.JLabel();</span>
+<span class="nc" id="L68">        jLabel9 = new javax.swing.JLabel();</span>
+<span class="nc" id="L69">        txtUsuPesNom = new javax.swing.JTextField();</span>
+
+<span class="nc" id="L71">        setClosable(true);</span>
+<span class="nc" id="L72">        setIconifiable(true);</span>
+<span class="nc" id="L73">        setMaximizable(true);</span>
+<span class="nc" id="L74">        setTitle(&quot;USUÁRIO&quot;);</span>
+<span class="nc" id="L75">        setEnabled(false);</span>
+<span class="nc" id="L76">        setFocusTraversalPolicyProvider(true);</span>
+
+<span class="nc" id="L78">        jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));</span>
+<span class="nc" id="L79">        jToolBar1.setFloatable(false);</span>
+<span class="nc" id="L80">        jToolBar1.setRollover(true);</span>
+
+<span class="nc" id="L82">        btnUsuIns.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_add.png&quot;))); // NOI18N</span>
+<span class="nc" id="L83">        btnUsuIns.setToolTipText(&quot;Inserir Usuário&quot;);</span>
+<span class="nc" id="L84">        btnUsuIns.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L85">        btnUsuIns.setFocusable(false);</span>
+<span class="nc" id="L86">        btnUsuIns.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L87">        btnUsuIns.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L88">        btnUsuIns.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L90">                btnUsuInsActionPerformed(evt);</span>
+<span class="nc" id="L91">            }</span>
+        });
+<span class="nc" id="L93">        jToolBar1.add(btnUsuIns);</span>
+
+<span class="nc" id="L95">        btnUsuCon.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/magnifier.png&quot;))); // NOI18N</span>
+<span class="nc" id="L96">        btnUsuCon.setToolTipText(&quot;Consultar Usuários&quot;);</span>
+<span class="nc" id="L97">        btnUsuCon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L98">        btnUsuCon.setFocusable(false);</span>
+<span class="nc" id="L99">        btnUsuCon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L100">        btnUsuCon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L101">        btnUsuCon.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L103">                btnUsuConActionPerformed(evt);</span>
+<span class="nc" id="L104">            }</span>
+        });
+<span class="nc" id="L106">        jToolBar1.add(btnUsuCon);</span>
+
+<span class="nc" id="L108">        btnUsuAlt.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_edit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L109">        btnUsuAlt.setToolTipText(&quot;Alterar Usuário&quot;);</span>
+<span class="nc" id="L110">        btnUsuAlt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L111">        btnUsuAlt.setFocusable(false);</span>
+<span class="nc" id="L112">        btnUsuAlt.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L113">        btnUsuAlt.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L114">        btnUsuAlt.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L116">                btnUsuAltActionPerformed(evt);</span>
+<span class="nc" id="L117">            }</span>
+        });
+<span class="nc" id="L119">        jToolBar1.add(btnUsuAlt);</span>
+
+<span class="nc" id="L121">        btnUsuExc.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/group_delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L122">        btnUsuExc.setToolTipText(&quot;Excluir Usuário&quot;);</span>
+<span class="nc" id="L123">        btnUsuExc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L124">        btnUsuExc.setFocusable(false);</span>
+<span class="nc" id="L125">        btnUsuExc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L126">        btnUsuExc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);</span>
+<span class="nc" id="L127">        btnUsuExc.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L129">                btnUsuExcActionPerformed(evt);</span>
+<span class="nc" id="L130">            }</span>
+        });
+<span class="nc" id="L132">        jToolBar1.add(btnUsuExc);</span>
+<span class="nc" id="L133">        jToolBar1.add(jSeparator1);</span>
+
+<span class="nc" id="L135">        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, &quot;Cadastro&quot;, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font(&quot;Tahoma&quot;, 0, 18), new java.awt.Color(0, 255, 255))); // NOI18N</span>
+
+<span class="nc" id="L137">        jLabel1.setText(&quot;* Campos Obrigatórios&quot;);</span>
+
+<span class="nc" id="L139">        jLabel2.setText(&quot;* ID :&quot;);</span>
+
+<span class="nc" id="L141">        jLabel3.setText(&quot;* NOME :&quot;);</span>
+
+<span class="nc" id="L143">        jLabel4.setText(&quot;* TELEFONE :&quot;);</span>
+
+<span class="nc" id="L145">        jLabel5.setText(&quot;* LOGIN :&quot;);</span>
+
+<span class="nc" id="L147">        jLabel6.setText(&quot;* SENHA :&quot;);</span>
+
+<span class="nc" id="L149">        jLabel7.setText(&quot;* PERFIL :&quot;);</span>
+
+<span class="nc" id="L151">        txtUsuId.setToolTipText(&quot;Digite id do usuário&quot;);</span>
+
+<span class="nc" id="L153">        txtUsuNom.setToolTipText(&quot;Digite nome do usuário&quot;);</span>
+
+<span class="nc" id="L155">        txtUsuLog.setToolTipText(&quot;Digite login do usuário&quot;);</span>
+
+<span class="nc" id="L157">        txtUsuSen.setToolTipText(&quot;Digite senha do usuário&quot;);</span>
+
+        try {
+<span class="nc" id="L160">            txtUsuFon.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(&quot;####-####&quot;)));</span>
+<span class="nc" id="L161">        } catch (java.text.ParseException ex) {</span>
+<span class="nc" id="L162">            ex.printStackTrace();</span>
+<span class="nc" id="L163">        }</span>
+<span class="nc" id="L164">        txtUsuFon.setToolTipText(&quot;Digite telefone do usuário&quot;);</span>
+
+<span class="nc" id="L166">        cboUsuPer.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;SELECIONE&quot;, &quot;admin&quot;, &quot;user&quot; }));</span>
+<span class="nc" id="L167">        cboUsuPer.setToolTipText(&quot;Selecione o perfil do usuário&quot;);</span>
+
+<span class="nc" id="L169">        btnUsuLim.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/wiping-swipe-for-floors.png&quot;))); // NOI18N</span>
+<span class="nc" id="L170">        btnUsuLim.setToolTipText(&quot;Limpar Campos&quot;);</span>
+<span class="nc" id="L171">        btnUsuLim.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L172">        btnUsuLim.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L174">                btnUsuLimActionPerformed(evt);</span>
+<span class="nc" id="L175">            }</span>
+        });
+
+<span class="nc" id="L178">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L179">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L180">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L181">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L182">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L183">                .addContainerGap()</span>
+<span class="nc" id="L184">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L185">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L186">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)</span>
+<span class="nc" id="L187">                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L188">                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L189">                                .addGap(18, 18, 18)</span>
+<span class="nc" id="L190">                                .addComponent(cboUsuPer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L191">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L192">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L193">                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)</span>
+<span class="nc" id="L194">                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+<span class="nc" id="L195">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
+<span class="nc" id="L196">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L197">                                    .addComponent(txtUsuId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L198">                                    .addComponent(txtUsuNom, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L199">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L200">                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L201">                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L202">                                .addComponent(btnUsuLim, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L203">                        .addGap(0, 16, Short.MAX_VALUE))</span>
+<span class="nc" id="L204">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L205">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L206">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L207">                                .addComponent(jLabel4)</span>
+<span class="nc" id="L208">                                .addGap(18, 18, 18)</span>
+<span class="nc" id="L209">                                .addComponent(txtUsuFon, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L210">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L211">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L212">                                    .addComponent(jLabel6)</span>
+<span class="nc" id="L213">                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L214">                                .addGap(18, 18, 18)</span>
+<span class="nc" id="L215">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L216">                                    .addComponent(txtUsuSen, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L217">                                    .addComponent(txtUsuLog, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L218">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))</span>
+        );
+<span class="nc" id="L220">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L221">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L222">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L223">                .addContainerGap()</span>
+<span class="nc" id="L224">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L225">                    .addComponent(jLabel2)</span>
+<span class="nc" id="L226">                    .addComponent(txtUsuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L227">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L228">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L229">                    .addComponent(jLabel3)</span>
+<span class="nc" id="L230">                    .addComponent(txtUsuNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L231">                .addGap(18, 18, Short.MAX_VALUE)</span>
+<span class="nc" id="L232">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L233">                    .addComponent(jLabel4)</span>
+<span class="nc" id="L234">                    .addComponent(txtUsuFon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L235">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L236">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L237">                    .addComponent(jLabel5)</span>
+<span class="nc" id="L238">                    .addComponent(txtUsuLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L239">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L240">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L241">                    .addComponent(jLabel6)</span>
+<span class="nc" id="L242">                    .addComponent(txtUsuSen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L243">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L244">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L245">                    .addComponent(jLabel7)</span>
+<span class="nc" id="L246">                    .addComponent(cboUsuPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L247">                .addGap(13, 13, 13)</span>
+<span class="nc" id="L248">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L249">                    .addComponent(btnUsuLim, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L250">                    .addComponent(jLabel1))</span>
+<span class="nc" id="L251">                .addContainerGap())</span>
+        );
+
+<span class="nc" id="L254">        tblUsu.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;ID&quot;, &quot;NOME&quot;, &quot;TELEFONE&quot;, &quot;LOGIN&quot;, &quot;PERFIL&quot;
+            }
+        ));
+<span class="nc" id="L271">        tblUsu.setToolTipText(&quot;Tabela do usuário&quot;);</span>
+<span class="nc" id="L272">        tblUsu.setEnabled(false);</span>
+<span class="nc" id="L273">        jScrollPane1.setViewportView(tblUsu);</span>
+
+<span class="nc" id="L275">        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, &quot;Pesquisa&quot;, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font(&quot;Tahoma&quot;, 0, 18), new java.awt.Color(0, 51, 255))); // NOI18N</span>
+
+<span class="nc" id="L277">        jLabel8.setText(&quot;Nome&quot;);</span>
+
+<span class="nc" id="L279">        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/C_ICONES/folder_explore.png&quot;))); // NOI18N</span>
+
+<span class="nc" id="L281">        txtUsuPesNom.setToolTipText(&quot;Pesquise os registros do usuário pelo nome&quot;);</span>
+<span class="nc" id="L282">        txtUsuPesNom.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L284">                txtUsuPesNomKeyReleased(evt);</span>
+<span class="nc" id="L285">            }</span>
+        });
+
+<span class="nc" id="L288">        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);</span>
+<span class="nc" id="L289">        jPanel2.setLayout(jPanel2Layout);</span>
+<span class="nc" id="L290">        jPanel2Layout.setHorizontalGroup(</span>
+<span class="nc" id="L291">            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L292">            .addGroup(jPanel2Layout.createSequentialGroup()</span>
+<span class="nc" id="L293">                .addContainerGap()</span>
+<span class="nc" id="L294">                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L295">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L296">                .addComponent(txtUsuPesNom, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L297">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L298">                .addComponent(jLabel9)</span>
+<span class="nc" id="L299">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L301">        jPanel2Layout.setVerticalGroup(</span>
+<span class="nc" id="L302">            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L303">            .addGroup(jPanel2Layout.createSequentialGroup()</span>
+<span class="nc" id="L304">                .addContainerGap()</span>
+<span class="nc" id="L305">                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L306">                    .addComponent(jLabel9)</span>
+<span class="nc" id="L307">                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L308">                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L309">                        .addComponent(txtUsuPesNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
+<span class="nc" id="L310">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L313">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L314">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L315">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L316">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L317">            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)</span>
+<span class="nc" id="L318">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L319">                .addContainerGap()</span>
+<span class="nc" id="L320">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
+<span class="nc" id="L321">                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L322">                    .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L323">                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L324">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L325">                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))</span>
+<span class="nc" id="L326">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
+        );
+<span class="nc" id="L328">        layout.setVerticalGroup(</span>
+<span class="nc" id="L329">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L330">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L331">                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L332">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L333">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L334">                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L335">                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L336">                .addGap(18, 18, 18)</span>
+<span class="nc" id="L337">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L338">                .addContainerGap(63, Short.MAX_VALUE))</span>
+        );
+
+<span class="nc" id="L341">        setBounds(0, 0, 915, 650);</span>
+<span class="nc" id="L342">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void btnUsuInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuInsActionPerformed
+        
+        // ATRIBUTOS
+<span class="nc" id="L347">        int adicionado = 0;</span>
+        String sql;
+        
+        // MÉTODO PARA ADICIONAR USUÁRIO
+<span class="nc" id="L351">        sql = &quot; insert into tbusuario( iduser, usuario, fone, login, senha, perfil ) values ( ?, ?, ?, ?, ?, ? ) &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L356">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGAR ID, NOME, FONE, LOGIN, SENHA, E PERFIL DO USUÁRIO NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+<span class="nc" id="L359">            pst.setString( 1, txtUsuId.getText() );</span>
+<span class="nc" id="L360">            pst.setString( 2, txtUsuNom.getText() );</span>
+<span class="nc" id="L361">            pst.setString( 3, txtUsuFon.getText() );</span>
+<span class="nc" id="L362">            pst.setString( 4, txtUsuLog.getText() );</span>
+<span class="nc" id="L363">            pst.setString( 5, txtUsuSen.getText() );</span>
+<span class="nc" id="L364">            pst.setString( 6, cboUsuPer.getSelectedItem().toString() );</span>
+            
+            // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS ( EXTRA: cboUsuPer.getSelectedIndex() == 0 )
+<span class="nc bnc" id="L367" title="All 10 branches missed.">            if ( txtUsuId.getText().isEmpty() || txtUsuNom.getText().isEmpty() || txtUsuLog.getText().isEmpty() || txtUsuSen.getText().isEmpty() || cboUsuPer.getSelectedIndex() == 0 )</span>
+            {
+<span class="nc" id="L369">                JOptionPane.showMessageDialog( null, &quot; POR FAVOR, PREENCHA OS CAMPOS OBRIGATÓRIOS &quot; );</span>
+            }
+            
+            else
+            {
+                // CONEXÃO PARA INSERIR NO BANCO DE DADOS
+<span class="nc" id="L375">                adicionado = pst.executeUpdate();</span>
+
+                // SAÍDA DE VALOR 1;  
+<span class="nc" id="L378">                System.out.println( adicionado );</span>
+            }
+            
+<span class="nc bnc" id="L381" title="All 2 branches missed.">            if( adicionado &gt; 0 )</span>
+            {
+                // LIMPAR CAMPOS
+<span class="nc" id="L384">                txtUsuId.setText(&quot;&quot;);</span>
+<span class="nc" id="L385">                txtUsuNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L386">                txtUsuFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L387">                txtUsuLog.setText(&quot;&quot;);</span>
+<span class="nc" id="L388">                txtUsuSen.setText(&quot;&quot;);</span>
+<span class="nc" id="L389">                cboUsuPer.setSelectedIndex(0);</span>
+                
+<span class="nc" id="L391">                JOptionPane.showMessageDialog( null, &quot; USUÁRIO CADASTRADO &quot;, &quot;MENSAGEM&quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+            }
+            
+            else
+            {
+<span class="nc" id="L396">                JOptionPane.showMessageDialog( null, &quot; USUÁRIO NÃO CADASTRADO &quot;, &quot;MENSAGEM&quot;, JOptionPane.ERROR_MESSAGE );</span>
+            }
+        }
+        
+<span class="nc" id="L400">        catch ( SQLException | HeadlessException e )</span>
+        {
+            // ERRO DE LOGIN
+<span class="nc" id="L403">            JOptionPane.showMessageDialog(null, &quot; CADASTRO JÁ UTILIZADO &quot; + &quot; \n &quot; + &quot; VERIFICAR LOGIN OU ID &quot;);</span>
+            
+            // APOIO AO ERRO
+<span class="nc" id="L406">            System.out.println( e );</span>
+<span class="nc" id="L407">        }         </span>
+<span class="nc" id="L408">    }//GEN-LAST:event_btnUsuInsActionPerformed</span>
+
+    private void btnUsuConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuConActionPerformed
+
+        // MÉTODO PARA CONSULTAR USUÁRIO
+        String sql;
+        int id;
+              
+<span class="nc" id="L416">        id = Integer.parseInt( JOptionPane.showInputDialog( null, &quot; DIGITE O ID DO USUÁRIO &quot; ) );</span>
+         
+        // SELECIONE TUDO DA TABELA TBUSUARIO ONDE O IDUSERS = ?
+<span class="nc" id="L419">        sql = &quot; select * from tbusuario where iduser = &quot; + id ;</span>
+
+        try 
+        {
+            // PREPARANDO CONEXAO
+<span class="nc" id="L424">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGAR NOME, FONE, LOGIN, SENHA, E PERFIL DO USUÁRIO NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+            //pst.setString( 1, txtUsuId.getText() );
+<span class="nc" id="L428">             txtUsuId.setText( String.valueOf( id ) );</span>
+      
+            // EXPOR O RESULTADO NA VARIÁVEL RS         
+<span class="nc" id="L431">            rs = pst.executeQuery();</span>
+            
+<span class="nc bnc" id="L433" title="All 2 branches missed.">            if ( rs.next() )</span>
+            {
+                // EXPOR O RESULTADO DA CONSULTA
+<span class="nc" id="L436">                txtUsuNom.setText( rs.getString( 2 ) );</span>
+<span class="nc" id="L437">                txtUsuFon.setText( rs.getString( 3 ) );</span>
+<span class="nc" id="L438">                txtUsuLog.setText( rs.getString( 4 ) );</span>
+<span class="nc" id="L439">                txtUsuSen.setText( rs.getString( 5 ) );</span>
+<span class="nc" id="L440">                cboUsuPer.setSelectedItem( rs.getString( 6 ) );</span>
+            }
+            
+            else
+            {
+                // LIMPAR CAMPOS
+<span class="nc" id="L446">                txtUsuNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L447">                txtUsuFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L448">                txtUsuLog.setText(&quot;&quot;);</span>
+<span class="nc" id="L449">                txtUsuSen.setText(&quot;&quot;);</span>
+<span class="nc" id="L450">                cboUsuPer.setSelectedIndex(0);</span>
+
+                // CAIXA DE TEXTO COM ERRO
+<span class="nc" id="L453">                JOptionPane.showMessageDialog( null, &quot; USUÁRIO NÃO CADASTRADO &quot; , &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+            }
+        }
+        
+<span class="nc" id="L457">        catch ( SQLException | HeadlessException e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L460">            System.out.println( e );</span>
+<span class="nc" id="L461">        } </span>
+<span class="nc" id="L462">    }//GEN-LAST:event_btnUsuConActionPerformed</span>
+
+    private void btnUsuAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuAltActionPerformed
+        
+        // MÉTODO EDITAR
+<span class="nc" id="L467">        int adicionado = 0;</span>
+        String sql;
+
+        // ATUALIZAR A TABELA TBUSUARIO COLOCANDO USUARIO, FONE, LOGIN, SENHA, PERFIL ONDE O IDUSER = ?
+<span class="nc" id="L471">        sql = &quot; update tbusuario set usuario = ?, fone = ?, login = ?, senha = ?, perfil = ? where iduser = ? &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L476">            pst = conexao.prepareStatement( sql );</span>
+            
+            // PEGAR NOME, FONE, LOGIN, SENHA, PERFIL E ID DO USUÁRIO NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS 
+<span class="nc" id="L479">            pst.setString( 1, txtUsuNom.getText() );</span>
+<span class="nc" id="L480">            pst.setString( 2, txtUsuFon.getText() );</span>
+<span class="nc" id="L481">            pst.setString( 3, txtUsuLog.getText() );</span>
+<span class="nc" id="L482">            pst.setString( 4, txtUsuSen.getText() );</span>
+<span class="nc" id="L483">            pst.setString( 5, cboUsuPer.getSelectedItem().toString() );</span>
+<span class="nc" id="L484">            pst.setString( 6, txtUsuId.getText() );</span>
+            
+            // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS ( EXTRA: cboUsuPer.getSelectedIndex() == 0 )
+<span class="nc bnc" id="L487" title="All 10 branches missed.">            if ( txtUsuNom.getText().isEmpty() || txtUsuLog.getText().isEmpty() || txtUsuSen.getText().isEmpty() || cboUsuPer.getSelectedIndex() == 0 || txtUsuId.getText().isEmpty() )</span>
+            {
+<span class="nc" id="L489">                JOptionPane.showMessageDialog( null, &quot; POR FAVOR, PREENCHA OS CAMPOS OBRIGATÓRIOS &quot; );</span>
+            }
+            
+            else
+            {
+                // CONEXÃO PARA INSERIR NO BANCO DE DADOS
+<span class="nc" id="L495">                adicionado = pst.executeUpdate();</span>
+
+                // SAÍDA DE VALOR 1;  
+<span class="nc" id="L498">                System.out.println( adicionado );</span>
+            }
+            
+<span class="nc bnc" id="L501" title="All 2 branches missed.">            if( adicionado &gt; 0 )</span>
+            {
+                // LIMPAR CAMPOS
+<span class="nc" id="L504">                txtUsuId.setText(&quot;&quot;);</span>
+<span class="nc" id="L505">                txtUsuNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L506">                txtUsuFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L507">                txtUsuLog.setText(&quot;&quot;);</span>
+<span class="nc" id="L508">                txtUsuSen.setText(&quot;&quot;);</span>
+<span class="nc" id="L509">                cboUsuPer.setSelectedIndex( 0 );</span>
+                
+<span class="nc" id="L511">                JOptionPane.showMessageDialog( null, &quot; DADOS DO USUÁRIO ALTERADOS COM SUCESSO &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+            }
+            
+            else
+            {
+<span class="nc" id="L516">                JOptionPane.showMessageDialog( null, &quot; USUÁRIO NÃO ALTERADO &quot;, &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+            }            
+        }
+        
+<span class="nc" id="L520">        catch ( SQLException | HeadlessException e )</span>
+        {
+            // APOIO A ERRO
+<span class="nc" id="L523">            System.out.println( e );</span>
+<span class="nc" id="L524">        } </span>
+<span class="nc" id="L525">    }//GEN-LAST:event_btnUsuAltActionPerformed</span>
+
+    private void btnUsuExcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuExcActionPerformed
+
+        // MÉTODO EXCLUIR FUNCIONÁRIO
+        int apagado;
+        int decisao;
+        String sql;
+        
+        // CAIXA DE DIÁLOGO
+<span class="nc" id="L535">        decisao = JOptionPane.showConfirmDialog( null, &quot; TEM CERTEZA QUE DESEJA REMOVER O USUÁRIO ? &quot;, &quot; ATENÇÃO &quot;, JOptionPane.YES_NO_OPTION );</span>
+        
+        // ESTRUTURA DE DECISÃO
+<span class="nc bnc" id="L538" title="All 2 branches missed.">        if ( decisao == JOptionPane.YES_OPTION )</span>
+        {
+            // MÉTODO EXCLUSÃO - EXCLUIR USUÁRIO DA TABELA TBUSUARIO ONDE O IDUSER = ?
+<span class="nc" id="L541">            sql = &quot; delete from tbusuario where iduser = ? &quot;;</span>
+            
+            try
+            {
+                // PREPARANDO CONEXÃO
+<span class="nc" id="L546">                pst = conexao.prepareStatement(sql);</span>
+                
+                // PEGAR ID DO USUÁRIO NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+<span class="nc" id="L549">                pst.setString( 1, txtUsuId.getText() );</span>
+                
+                // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS ( EXTRA: cboUsuPer.getSelectedIndex() == 0 )
+<span class="nc bnc" id="L552" title="All 10 branches missed.">                if ( txtUsuNom.getText().isEmpty() || txtUsuLog.getText().isEmpty() || txtUsuSen.getText().isEmpty() || cboUsuPer.getSelectedIndex() == 0 || txtUsuId.getText().isEmpty() )</span>
+                {
+<span class="nc" id="L554">                    JOptionPane.showMessageDialog( null, &quot; TODOS OS CAMPOS DEVEM ESTAR PREENCHIDOS PARA A EXCLUSÃO SER FEITA &quot; );</span>
+                }
+                
+                // CONEXÃO PARA DELETAR NO BANCO DE DADOS
+<span class="nc" id="L558">                apagado = pst.executeUpdate();</span>
+                
+<span class="nc bnc" id="L560" title="All 2 branches missed.">                if( apagado &gt; 0 )</span>
+                {
+                    // LIMPAR CAMPOS  
+<span class="nc" id="L563">                    txtUsuId.setText(&quot;&quot;);</span>
+<span class="nc" id="L564">                    txtUsuNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L565">                    txtUsuFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L566">                    txtUsuLog.setText(&quot;&quot;);</span>
+<span class="nc" id="L567">                    txtUsuSen.setText(&quot;&quot;);</span>
+<span class="nc" id="L568">                    cboUsuPer.setSelectedIndex(0);</span>
+                    
+<span class="nc" id="L570">                    JOptionPane.showMessageDialog( null, &quot; USUÁRIO REMOVIDO COM SUCESSO &quot;, &quot; MENSAGEM &quot;, JOptionPane.INFORMATION_MESSAGE );</span>
+                } 
+                
+                else
+                {
+<span class="nc" id="L575">                    JOptionPane.showMessageDialog( null, &quot; USUÁRIO NÃO REMOVIDO &quot;, &quot; MENSAGEM &quot;, JOptionPane.ERROR_MESSAGE );</span>
+                }          
+            }
+            
+<span class="nc" id="L579">            catch ( SQLException | HeadlessException e )</span>
+            {
+                // APOIO AO ERRO
+<span class="nc" id="L582">                System.out.println( e );</span>
+<span class="nc" id="L583">            }</span>
+        }
+        
+<span class="nc bnc" id="L586" title="All 2 branches missed.">        else if ( decisao == JOptionPane.NO_OPTION )</span>
+        {
+<span class="nc" id="L588">            JOptionPane.showMessageDialog( null, &quot; ENTENDIDO &quot; );</span>
+        }
+<span class="nc" id="L590">    }//GEN-LAST:event_btnUsuExcActionPerformed</span>
+    private void btnUsuLimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuLimActionPerformed
+        
+        // CAMPOS LIMPOS
+<span class="nc bnc" id="L594" title="All 12 branches missed.">        if ( txtUsuId.getText().isEmpty() &amp;&amp; txtUsuNom.getText().isEmpty() &amp;&amp; txtUsuLog.getText().isEmpty() &amp;&amp;  txtUsuSen.getText().isEmpty() &amp;&amp; cboUsuPer.getSelectedIndex() == 0 &amp;&amp; txtUsuPesNom.getText().isEmpty() )</span>
+        {
+<span class="nc" id="L596">            JOptionPane.showMessageDialog( null, &quot; CAMPOS ENCONTRAM-SE LIMPOS &quot; );</span>
+        }
+        
+        else
+        {
+            // LIMPAR CAMPOS 
+<span class="nc" id="L602">            txtUsuPesNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L603">            txtUsuId.setText(&quot;&quot;);</span>
+<span class="nc" id="L604">            txtUsuNom.setText(&quot;&quot;);</span>
+<span class="nc" id="L605">            txtUsuFon.setText(&quot;&quot;);</span>
+<span class="nc" id="L606">            txtUsuLog.setText(&quot;&quot;);</span>
+<span class="nc" id="L607">            txtUsuSen.setText(&quot;&quot;);</span>
+<span class="nc" id="L608">            cboUsuPer.setSelectedIndex(0); </span>
+        }
+<span class="nc" id="L610">    }//GEN-LAST:event_btnUsuLimActionPerformed</span>
+
+    private void txtUsuPesNomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuPesNomKeyReleased
+       
+        //////////////// EVENTO EM TEMPO REAL DE PESQUISA //////////////////////
+        String sql;
+
+        // MÉTODO PARA PESQUISAR PELO NOME
+<span class="nc" id="L618">        sql = &quot; select iduser as ID, usuario as USUÁRIO, fone as TELEFONE, login as LOGIN, perfil as PERFIL from tbusuario where usuario like ? order by iduser &quot;;</span>
+        
+        try 
+        {
+            // PREPARANDO CONEXÃO
+<span class="nc" id="L623">            pst = conexao.prepareStatement( sql );</span>
+
+            // PEGAR NOME DO USUÁRIO NOS CAMPOS DE TEXTO E COLOCAR BANCO DE DADOS
+<span class="nc" id="L626">            pst.setString( 1, txtUsuPesNom.getText() + &quot;%&quot; );</span>
+           
+           // EXPOR OS RESULTADOS
+<span class="nc" id="L629">           rs = pst.executeQuery();</span>
+           
+           // TRAZENDO E COLOCANDO OS DADOS NA TABELA
+<span class="nc" id="L632">           tblUsu.setModel( DbUtils.resultSetToTableModel( rs ) );</span>
+        }
+        
+<span class="nc" id="L635">        catch ( Exception e )</span>
+        {
+            // APOIO AO ERRO
+<span class="nc" id="L638">            System.out.println( e );            </span>
+<span class="nc" id="L639">        }</span>
+<span class="nc" id="L640">    }//GEN-LAST:event_txtUsuPesNomKeyReleased</span>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUsuAlt;
+    private javax.swing.JButton btnUsuCon;
+    private javax.swing.JButton btnUsuExc;
+    private javax.swing.JButton btnUsuIns;
+    private javax.swing.JButton btnUsuLim;
+    private javax.swing.JComboBox&lt;String&gt; cboUsuPer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tblUsu;
+    private javax.swing.JFormattedTextField txtUsuFon;
+    private javax.swing.JTextField txtUsuId;
+    private javax.swing.JTextField txtUsuLog;
+    private javax.swing.JTextField txtUsuNom;
+    private javax.swing.JTextField txtUsuPesNom;
+    private javax.swing.JPasswordField txtUsuSen;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
